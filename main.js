@@ -13,7 +13,7 @@ var windowsize = 8192;
 var totaldata = [];
 var url=[];
 var count_position=0;
-var Meyda = require('meyda');
+
 
 //get file directory
 window.onload=function(){
