@@ -408,7 +408,7 @@ function chart_display(distance_score_data) {
     legend.append("text")
         .attr("class", "mono legendElement")
         .text(function(d) {
-            return ">" + Math.round(d * 100) / 100;
+            return "≥" + Math.round(d * 100) / 100;
         })
         .attr("x", function(d, i) {
             return legendElementWidth * i;
