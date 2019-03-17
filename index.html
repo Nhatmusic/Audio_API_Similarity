@@ -1,0 +1,83 @@
+<html>
+<head>
+    <!-- style sheets -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+
+        .node {
+            stroke: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .link {
+            stroke: #000000;
+            stroke-opacity: .6;
+        }
+
+        .axis {
+            opacity: 0.5;
+            font: 10px sans-serif;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        .axis .domain {
+            fill: none;
+            stroke: #000;
+            stroke-opacity: .3;
+            stroke-width: 4px;
+            stroke-linecap: round;
+        }
+
+        .axis .halo {
+            fill: none;
+            stroke: #ddd;
+            stroke-width: 3px;
+            stroke-linecap: round;
+        }
+
+        .slider .handle {
+            fill: #fff;
+            stroke: #000;
+            stroke-opacity: .5;
+            stroke-width: 1.25px;
+            cursor: grab;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="./assets/js/p5/p5.min.js"></script>
+    <script src="./assets/js/math.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale.v2.min.js"></script>
+    <script src="http://d3js.org/colorbrewer.v1.min.js"></script>
+    <script src="./assets/js/underscore.js"></script>
+    <script src="./assets/js/clusters.js"></script>
+    <script src="./assets/js/distance.js"></script>
+    <script src="./assets/js/bundle1.js"></script>
+
+
+
+
+</head>
+<div>
+<input type="file" id="filepicker" name="fileList" multiple />
+<ul id="listing"></ul>
+</div>
+
+<h1>Network Diagram of Distance Pair Node</h1>
+
+<div id="network">
+</div>
+<div id="chart">
+<h1> Heatmap of Distance Between Matrix Pair</h1>
+</div>
+<div id="Canvas">
+    <h1>Self Similarity Matrix of Instrument Note Samples</h1>
+<canvas id="myCanvas" width="8000" height="2000" ></canvas>
+</div>
+
+</div>
+</body>
+</html>

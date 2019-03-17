@@ -1,0 +1,17 @@
+.heatmap_tooltip {
+    text-align: center;
+    font-family: monospace;
+    font-size: 8px;
+    color: #000;
+    position: relative;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #66F;
+    padding: 5px;
+    border-radius: 10px ;
+    width: 150px;
+    z-index:10000;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
