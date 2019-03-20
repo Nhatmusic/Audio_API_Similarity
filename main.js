@@ -8,7 +8,7 @@ var count = 0;
 var origin_data1 = [];
 var marginleft = 50;
 var matrixgap = 400;
-var durations = 8;
+var durations = 10;
 var windowsize = 8192;
 var totaldata = [];
 var url=[];
@@ -116,7 +116,9 @@ window.onload=function(){
                     drawmatrix(matrix11, index, hop, buf, dur, url[index]);
                     ++index;
                     if (index < url.length) {
-                        getData(url[index], index)
+                        if (0<dur<8) {
+                            getData(url[index], index)
+                        }
                     }
                 }
             }).catch(function (err) {
@@ -320,8 +322,8 @@ function comparescore(selfmatrix1, selfmatrix2) {
 function chart_display(distance_score_data) {
 
     var margin = {top: 50, right: 0, bottom: 100, left: 50}
-    var width = 1000 - margin.left - margin.right;
-    var height = 1000 - margin.top - margin.bottom;
+    var width = 2000 - margin.left - margin.right;
+    var height = 2000 - margin.top - margin.bottom;
     var gridSize = 20;
     var colors = colorbrewer.RdBu[9];
     var cellSize = 10
@@ -434,8 +436,8 @@ function chart_display(distance_score_data) {
 
 
 function network_diagram(distance_data, self_similarity_data) {
-    var width = 800,
-        height = 800;
+    var width = 2000,
+        height = 1000;
     var colors = colorbrewer.Spectral[9];
     var dataset = self_similarity_data;
     var scale = d3.scale.linear().domain([math.min(dataset), math.max(dataset)]).range([1, 0]);

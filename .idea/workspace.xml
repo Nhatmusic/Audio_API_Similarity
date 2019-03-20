@@ -3,8 +3,69 @@
   <component name="ChangeListManager">
     <list default="true" id="76e2b8b2-2181-4531-b729-6fad8175de94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_mezzo-forte_staccato.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_05_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_05_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_05_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_05_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_1_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_1_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_phrase_mezzo-forte_legato.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_phrase_mezzo-forte_nonlegato.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_mezzo-forte_staccato.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_05_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_05_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_05_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_05_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_phrase_mezzo-forte_legato.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_phrase_mezzo-forte_nonlegato.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_mezzo-forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_mezzo-forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_mezzo-forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_025_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_025_mezzo-forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_025_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_05_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_05_mezzo-forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_05_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_1_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_1_mezzo-forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_1_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_As2_1_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/cello_A3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/cello_D4.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/chi_fu.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/contrabassa11.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/contrabassa12.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/contrabassa13.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/contrabassa31.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/flute_D4.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/flutea4.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/flutea5.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/hello.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/hello1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/tom2.mp3" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="994">
-              <caret line="76" column="17" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+            <state relative-caret-position="552">
+              <caret line="50" column="51" lean-forward="true" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -29,23 +90,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="14" />
+            <state relative-caret-position="170">
+              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
               <folding>
                 <element signature="e#5882#9543#0" />
-                <element signature="e#15880#24580#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test canvas.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="76" selection-start-line="7" selection-start-column="76" selection-end-line="7" selection-end-column="76" />
-              <folding>
-                <element signature="n#style#0;n#img#0;n#article#1;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,6 +114,7 @@
       <find>head</find>
       <find>node</find>
       <find>inne</find>
+      <find>drawmatrix</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -136,12 +185,12 @@
       <updated>1552856022918</updated>
       <workItem from="1552856024681" duration="3282000" />
       <workItem from="1552923355016" duration="20687000" />
-      <workItem from="1553023928910" duration="1539000" />
+      <workItem from="1553023928910" duration="4276000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25508000" />
+    <option name="totallyTimeSpent" value="28245000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="3456" height="1416" extended-state="6" />
@@ -189,18 +238,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="994">
-          <caret line="76" column="17" selection-start-line="76" selection-start-column="17" selection-end-line="76" selection-end-column="17" />
+        <state relative-caret-position="552">
+          <caret line="50" column="51" lean-forward="true" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="1" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="14" />
+        <state relative-caret-position="170">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding>
             <element signature="e#5882#9543#0" />
-            <element signature="e#15880#24580#0" />
           </folding>
         </state>
       </provider>
