@@ -13,6 +13,7 @@ var windowsize = 8192;
 var totaldata = [];
 var url=[];
 var count_position=0;
+ all_image=[];
 var Meyda = require('meyda');
 
 //get file directory
@@ -174,6 +175,8 @@ function drawmatrix(self_similarity_data, index, hop, buffer, duration, songname
 
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
+
+
     // define the size of image
     var imgData = ctx.createImageData(color_data[0].length, color_data.length);
     //draw each pixel, one pixel contain 4 values (R G B A),
@@ -188,6 +191,15 @@ function drawmatrix(self_similarity_data, index, hop, buffer, duration, songname
             imgData.data[pos + 3] = 255;
         }
     }
+
+    ctx.putImageData(imgData, 0, 0);
+
+    var imagedata = c.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+    all_image.push(imagedata);
+    ctx.clearRect(0, 0, 100, 100);
+
+
+
     console.log("I am calculating the distance");
     if (index == (url.length-1)) {
         var totalscore = [];
@@ -202,29 +214,31 @@ function drawmatrix(self_similarity_data, index, hop, buffer, duration, songname
         network_diagram(totalscore,totaldata)
     }
 
-    //Define the position to draw self_similarity matrix on canvas
-    var position = 1;
 
-    if (index < 15) {
-        ctx.putImageData(imgData, index * (matrixgap) + marginleft, 150);
-    } else {
-        index = index%15;
-        if(index==0) {
-            count_position++
-        }
-        position = count_position*(position * 8);
-        ctx.putImageData(imgData, (index) * (matrixgap) + marginleft, 500*(count_position))
-        console.log("i count"+count_position)
 
-    }
-
-    //label the matrix by name, hopsize, buffersize, duration
-    ctx.font = "20px Arial";
-    ctx.fillText("Audio: " + songname, index * (matrixgap) + marginleft, 50 * position);
-    ctx.fillText("Hopsize: " + hop.toFixed(0), index * (matrixgap) + marginleft, 50 * position + 30);
-    ctx.fillText("Buffersize: " + buffer, index * (matrixgap) + marginleft, 50 * position + 60);
-    ctx.fillText("Duration: " + duration.toFixed(2), index * (matrixgap) + marginleft, 50 * position + 90);
-    console.log("I am drawing")
+   // Define the position to draw self_similarity matrix on canvas
+   //  var position = 1;
+   //
+   //  if (index < 15) {
+   //      ctx.putImageData(imgData, index * (matrixgap) + marginleft, 150);
+   //  } else {
+   //      index = index%15;
+   //      if(index==0) {
+   //          count_position++
+   //      }
+   //      position = count_position*(position * 8);
+   //      ctx.putImageData(imgData, (index) * (matrixgap) + marginleft, 500*(count_position))
+   //      console.log("i count"+count_position)
+   //
+   //  }
+   //
+   //  //label the matrix by name, hopsize, buffersize, duration
+   //  ctx.font = "20px Arial";
+   //  ctx.fillText("Audio: " + songname, index * (matrixgap) + marginleft, 50 * position);
+   //  ctx.fillText("Hopsize: " + hop.toFixed(0), index * (matrixgap) + marginleft, 50 * position + 30);
+   //  ctx.fillText("Buffersize: " + buffer, index * (matrixgap) + marginleft, 50 * position + 60);
+   //  ctx.fillText("Duration: " + duration.toFixed(2), index * (matrixgap) + marginleft, 50 * position + 90);
+   //  console.log("I am drawing")
     //reset the origin_data from Meyda Analyzer for next use
     origin_data1 = [];
 }
@@ -534,13 +548,8 @@ function network_diagram(distance_data, self_similarity_data) {
     nodes.forEach((d,i)=>{
         d.name = audio_label[i];
         d.url = url[i]
+        d.image=all_image[i];
     })
-    console.log(nodes);
-    // for (i = 0; i < audio_label.length; i++) {
-    //
-    //     nodes.push({"name": audio_label[i],
-    //                 "url":  url[i]})
-    // }
 
     var links = [];
     var link2 = [];
@@ -563,7 +572,7 @@ function network_diagram(distance_data, self_similarity_data) {
 
     function brushed() {
         var value = brush.extent()[0];
-        console.log(value)
+
 
         if (d3.event.sourceEvent) {
             value = x.invert(d3.mouse(this)[1]);
@@ -606,15 +615,16 @@ function network_diagram(distance_data, self_similarity_data) {
                     return d.target.y;
                 });
 
-            node.attr("cx", function (d) {
-                return d.x;
-            })
-                .attr("cy", function (d) {
-                    return d.y;
-                });
-            d3.selectAll(".song")[0].forEach((g,index)=>{
-                d3.select(g).attr('transform',`translate(${(nodes[index].x)-20},${(nodes[index].y)-60})`)
-            })
+            // node.attr("cx", function (d) {
+            //     return d.x;
+            // })
+            //     .attr("cy", function (d) {
+            //         return d.y;
+            //     });
+            node.attr("transform", function(d) { return `translate(${d.x-12},${d.y-6})` });
+            // d3.selectAll(".song")[0].forEach((g,index)=>{
+            //     d3.select(g).attr('transform',`translate(${(nodes[index].x)-20},${(nodes[index].y)-60})`)
+            // })
             text.attr("x", function (d) {
                 return d.x;
             })
@@ -630,37 +640,46 @@ function network_diagram(distance_data, self_similarity_data) {
     force
         .nodes(nodes);
 
+    // var node = nodes_g.selectAll(".node")
+    //     .data(nodes).enter()
+    //     .append("g")
+    //     // .attr("transform", function (song,i){ if (i<5) {return `translate(${i*200},${0})`}
+    //     // else return `translate(${(i-5)*200},${200})` })
+    //     // .attr("id", function (d,i){return "song"+ i})
+    //     .attr("class","song")
+    //     .call(force.drag)
+    //     .selectAll("g")
+    //     .data(data=>data)
+    //     .enter()
+    //     .append("g")
+    //     .attr("transform", (d, i) => `translate(${ 0}, ${i/2 })`)
+    //     .selectAll("rect")
+    //     .data(function (d) {
+    //         return d
+    //     })
+    //     .enter()
+    //     .append("rect")
+    //     .attr("x", function (d, i) {
+    //         return i/2;
+    //     })
+    //     .attr("y", 0)
+    //     .attr("height", 2)
+    //     .attr("width", 2)
+    //     .attr("transform", "translate(20,50)")
+    //     .style("fill", function (d) {
+    //         return d3.hsl(257*scale(d),1,0.5).hex(0);
+    //     });
     var node = nodes_g.selectAll(".node")
-        .data(nodes).enter()
-        .append("g")
-        // .attr("transform", function (song,i){ if (i<5) {return `translate(${i*200},${0})`}
-        // else return `translate(${(i-5)*200},${200})` })
-        // .attr("id", function (d,i){return "song"+ i})
-        .attr("class","song")
-        .call(force.drag)
-        .selectAll("g")
-        .data(data=>data)
-        .enter()
-        .append("g")
-        .attr("transform", (d, i) => `translate(${ 0}, ${i/2 })`)
-        .selectAll("rect")
-        .data(function (d) {
-            return d
-        })
-        .enter()
-        .append("rect")
-        .attr("x", function (d, i) {
-            return i/2;
-        })
-        .attr("y", 0)
-        .attr("height", 2)
-        .attr("width", 2)
-        .attr("transform", "translate(20,50)")
-        .style("fill", function (d) {
-            return d3.hsl(257*scale(d),1,0.5).hex(0);
-        });
-
-
+        .data(nodes)
+        .enter().append("g")
+        .attr("class", "node")
+        .call(force.drag);
+      node.append('svg:image')
+      .attr('xlink:href', function(d){ return d.image; })
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 63)
+      .attr('height', 42);
 
     var text = svg.append("g")
         .attr("class", "labels")
@@ -668,6 +687,11 @@ function network_diagram(distance_data, self_similarity_data) {
         .data(nodes)
         .enter().append("text")
         .attr("dx", 0)
+
+
+
+
+
         .attr("dy", "-1.2em")
         .attr("font-size", "10px")
         .text(function (d) {

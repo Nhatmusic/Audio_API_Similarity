@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <script>
+        function drawInCanvas() {
+            var canvas = document.getElementById("html5canvas");
+            if (canvas.getContext) { // Check if HTML5 Canvas is supported
+// Draw in Canvas element
+                var context = canvas.getContext("2d"); // get Canvas Context
+                context.rect(10, 10, 100, 100); // draw rectangle
+                context.fill(); // fill inside rectangle in HTML5 canvas space
+            }
+        }
+        function canvasToImage() {
+            var canvas = document.getElementById("html5canvas");
+            if (canvas.getContext) { // Check if HTML5 Canvas is supported
+// Canvas to Image
+                var canvasImageData = canvas.toDataURL(); // save canvas to image data in .png format
+                var image = document.getElementById("html5Image"); // get image element in HTML page
+                image.src = canvasImageData; // set image source to canvas image data
+            }
+        }
+    </script>
+</head>
+<body>
+<article>
+    <button onclick="drawInCanvas();">Draw in Canvas</button><br />
+    <button onclick="canvasToImage();">Canvas to Image</button><br />
+    <canvas id="html5canvas"><br />
+</article>
+<article>
+    <img id="html5Image" style="border-width:thin;border-style:solid;border-color:Red;" />
+</article>
+</body>
+</html>
+The HTML5 page will be similar to as seen in belo
