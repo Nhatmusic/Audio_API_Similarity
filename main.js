@@ -732,23 +732,30 @@ function network_diagram(distance_data, self_similarity_data) {
             } else {
                 // Get saved audio element
                 audioElement = this.getElementsByTagName("audio")[0];
-                if (isPlaying(audioElement)) {
+                if (audioElement.isPlaying()) {
                     // Pause if it is playing
-                    audioElement.pause();
+                    audioElement.stop();
                 } else {
                     // Play if not already playing
                     audioElement.play();
                 }
             }
-
-            function isPlaying(audio) {
-                return audio
-                    && audio.currentTime > 0  // Audio has started playing
-                    && !audio.paused          // Audio playback is not paused
-                    && !audio.ended           // Audio playback is not ended
-                    && audio.readyState >= 3; // Audio data is available and ready for playback
-            }
         });
+    
+    Audio.prototype.isPlaying = function() {
+        return this
+            && this.currentTime > 0  // Audio has started playing
+            && !this.paused          // Audio playback is not paused
+            && !this.ended           // Audio playback is not ended
+            && this.readyState >= 3; // Audio data is available and ready for playback
+    };
+    
+    Audio.prototype.stop = function() {
+        // Pause the playback
+        this.pause();
+        // Reset the playback time marker
+        this.currentTime = 0;
+    };
 
     brush.on("brush", brushed);
 
