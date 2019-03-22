@@ -707,11 +707,6 @@ function network_diagram(distance_data, self_similarity_data) {
         .data(nodes)
         .enter().append("text")
         .attr("dx", 0)
-
-
-
-
-
         .attr("dy", "-1.2em")
         .attr("font-size", "10px")
         .text(function (d) {
