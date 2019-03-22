@@ -10,7 +10,7 @@ var marginleft = 50;
 var matrixgap = 400;
 var durations = 10;
 var windowsize = 8192;
-var totaldata = [];
+ totaldata = [];
 var url=[];
 var count_position=0;
  all_image=[];
@@ -293,6 +293,24 @@ function euclideanDistance(a, b) {
     }
     return sum
 }
+//         function euclideanDistance(a, b) {
+//             var sum = 0;
+//             if (a.length == b.length) {
+//
+//                 sum = distance(a,b);
+//                 //if 2 vector does not have the same data lenthg, fill 0 to the rest of smaller dimension vector
+//             } else if (a.length < b.length) {
+//
+//                 sum = distance(a,b.slice(0,a.length));
+//
+//             } else {
+//
+//
+//                 sum = distance(a.slice(b.length),b)
+//
+//             }
+//             return sum
+//         }
 
 //Create Cross similarity Matrix from 2 SSM data
 function comparescore(selfmatrix1, selfmatrix2) {
