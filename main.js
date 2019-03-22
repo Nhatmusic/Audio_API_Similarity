@@ -699,7 +699,8 @@ function network_diagram(distance_data, self_similarity_data) {
       .attr('x', 0)
       .attr('y', 0)
       .attr('width', 63)
-      .attr('height', 42);
+      .attr('height', 42)
+      .on("click", function(d){ PlayAudio(this, d) });
 
     var text = svg.append("g")
         .attr("class", "labels")
@@ -712,30 +713,32 @@ function network_diagram(distance_data, self_similarity_data) {
         .text(function (d) {
             return d.name
         })
-        .on("click", function(d){
-            // Play audio on click
-            let audioElement;
-            if (this.getElementsByTagName("audio").length === 0) {
-                // Create audio object from source url
-                audioElement = new Audio(d.url);
-                // Preload audio to improve response times
-                audioElement.preload = "auto";
-                // Cache audio for later use to improve performance
-                this.appendChild(audioElement);
-                // Play the audio
-                audioElement.play();
+        .on("click", function(d){ PlayAudio(this, d) });
+    
+    function PlayAudio(thisElement, d) {
+        // Play audio on click
+        let audioElement;
+        if (thisElement.getElementsByTagName("audio").length === 0) {
+            // Create audio object from source url
+            audioElement = new Audio(d.url);
+            // Preload audio to improve response times
+            audioElement.preload = "auto";
+            // Cache audio for later use to improve performance
+            thisElement.appendChild(audioElement);
+            // Play the audio
+            audioElement.play();
+        } else {
+            // Get saved audio element
+            audioElement = thisElement.getElementsByTagName("audio")[0];
+            if (audioElement.isPlaying()) {
+                // Pause if it is playing
+                audioElement.stop();
             } else {
-                // Get saved audio element
-                audioElement = this.getElementsByTagName("audio")[0];
-                if (audioElement.isPlaying()) {
-                    // Pause if it is playing
-                    audioElement.stop();
-                } else {
-                    // Play if not already playing
-                    audioElement.play();
-                }
+                // Play if not already playing
+                audioElement.play();
             }
-        });
+        }
+    }
     
     Audio.prototype.isPlaying = function() {
         return this
@@ -757,8 +760,6 @@ function network_diagram(distance_data, self_similarity_data) {
     slider
         .call(brush.extent([0, 0]))
         .call(brush.event);
-
-
 }
 
 
