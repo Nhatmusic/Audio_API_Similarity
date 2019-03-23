@@ -3,69 +3,154 @@
   <component name="ChangeListManager">
     <list default="true" id="76e2b8b2-2181-4531-b729-6fad8175de94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_mezzo-forte_staccato.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_pianissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_025_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_05_forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_05_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_05_pianissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_05_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_1_forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_1_pianissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_phrase_mezzo-forte_legato.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_phrase_mezzo-forte_nonlegato.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_mezzo-forte_staccato.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_pianissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_025_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_05_forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_05_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_05_pianissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_05_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_phrase_mezzo-forte_legato.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_phrase_mezzo-forte_nonlegato.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_mezzo-forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_pianissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_025_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_mezzo-forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_pianissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_05_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_mezzo-forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_pianissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_1_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_025_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_025_mezzo-forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_025_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_05_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_05_mezzo-forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_05_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_1_fortissimo_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_1_mezzo-forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_1_piano_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_As2_1_forte_normal.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/cello_A3.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/cello_D4.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/chi_fu.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/contrabassa11.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/contrabassa12.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/contrabassa13.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/contrabassa31.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/flute_D4.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/flutea4.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/flutea5.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/hello.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/hello1.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sound/tom2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_A3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_A3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_A4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_A4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_A5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_A5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_As3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_As3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_As4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_As4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_As5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_As5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_B3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_B3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_B4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_B4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_B5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_B5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_C3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_C3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_C4.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_C4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_C4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_C5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_C5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_C6_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Cs3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Cs3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Cs3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Cs4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Cs4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Cs5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Cs6_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_D3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_D3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_D4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_D4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_D5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_D5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_D6_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Ds3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Ds3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Ds4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Ds4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Ds5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Ds5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Ds6_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_E3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_E3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_E3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_E4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_E4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_E5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_E5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_E6_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_F3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_F3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_F4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_F4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_F5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_F5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Fs3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Fs3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Fs4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Fs4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Fs5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Fs5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_G3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_G3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_G4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_G5_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_G5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Gs3_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Gs3_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Gs4_very-long_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Gs4_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjo_Gs5_very-long_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjoa31.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/banjoa32.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_15_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_15_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_15_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_15_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_1_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_phrase_mezzo-forte_staccatissimo.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A2_phrase_mezzo-forte_tongued-slur.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_15_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_15_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_15_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_15_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_1_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_1_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_1_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_1_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_phrase_forte_major-trill.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_phrase_mezzo-forte_staccatissimo.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_phrase_mezzo-forte_tongued-slur.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A3_very-long_mezzo-piano_harmonic.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_15_forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_15_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_15_mezzo-forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_15_pianissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_15_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_phrase_forte_major-trill.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A4_phrase_forte_minor-trill.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_15_fortissimo_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_15_mezzo-forte_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bass-clarinet_A5_15_piano_normal.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bassdrum1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/bassdrum2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/cello_A32.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/cello_D42.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/contrabassa32.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/contrabassd41.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/contrabassd42.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/flute_D42.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/flutea42.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/flutea52.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/frenchhorna2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/guitar_As2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/guitar_As4.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/guitara31.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/guitara32.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/guitard41.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/guitard42.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/mandolina31.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/mandolina32.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/ririsusu.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/risu_roba.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/risu_sori.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/roba_rouba.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/rouba_roba.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/snaredrum1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/snaredrum2.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/snaredrum3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/tenordrum.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/tom1.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/violaa31.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/violaa32.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/violad41.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/violad42.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/violina31.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/violina32.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/violind41.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sound/violind42.mp3" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -79,22 +164,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
+        <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="552">
-              <caret line="50" column="51" lean-forward="true" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
+            <state relative-caret-position="388">
+              <caret line="196" column="38" selection-start-line="196" selection-start-column="38" selection-end-line="196" selection-end-column="38" />
+              <folding>
+                <element signature="e#9886#9949#0" />
+                <element signature="e#11433#12527#0" />
+                <element signature="e#12571#13111#0" />
+                <element signature="e#13894#14782#0" />
+                <element signature="e#14754#19365#0" />
+                <element signature="e#19438#27743#0" />
+                <element signature="e#27778#32461#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.js">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-              <folding>
-                <element signature="e#5882#9543#0" />
-              </folding>
+            <state relative-caret-position="473">
+              <caret line="76" column="40" selection-start-line="76" selection-start-column="40" selection-end-line="76" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -115,6 +206,21 @@
       <find>node</find>
       <find>inne</find>
       <find>drawmatrix</find>
+      <find>numberof</find>
+      <find>audio_label</find>
+      <find>compare</find>
+      <find>chart</find>
+      <find>totalscore</find>
+      <find>dataset</find>
+      <find>d3</find>
+      <find>Smith</find>
+      <find>debugger</find>
+      <find>scorefinal</find>
+      <find>comparescore1</find>
+      <find>console</find>
+      <find>console.log</find>
+      <find>threshold</find>
+      <find>marginleft</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -140,7 +246,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,12 +257,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CS5331_Spring2019" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -173,6 +279,16 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/main.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.main.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -185,24 +301,25 @@
       <updated>1552856022918</updated>
       <workItem from="1552856024681" duration="3282000" />
       <workItem from="1552923355016" duration="20687000" />
-      <workItem from="1553023928910" duration="4276000" />
+      <workItem from="1553023928910" duration="9746000" />
+      <workItem from="1553266234863" duration="25238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28245000" />
+    <option name="totallyTimeSpent" value="58953000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="3456" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1217086" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.095377415" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3998441" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -236,20 +353,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/../../Spring 2019/Research/Real_Time_Audio_Mfcc-master/assets/js/sketch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="50" column="51" lean-forward="true" selection-start-line="50" selection-start-column="51" selection-end-line="50" selection-end-column="51" />
+        <state relative-caret-position="1113">
+          <caret line="355" column="29" lean-forward="true" selection-start-line="355" selection-start-column="29" selection-end-line="355" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6562">
+          <caret line="1138" column="4" selection-start-line="1138" selection-start-column="4" selection-end-line="1138" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        <state relative-caret-position="388">
+          <caret line="196" column="38" selection-start-line="196" selection-start-column="38" selection-end-line="196" selection-end-column="38" />
           <folding>
-            <element signature="e#5882#9543#0" />
+            <element signature="e#9886#9949#0" />
+            <element signature="e#11433#12527#0" />
+            <element signature="e#12571#13111#0" />
+            <element signature="e#13894#14782#0" />
+            <element signature="e#14754#19365#0" />
+            <element signature="e#19438#27743#0" />
+            <element signature="e#27778#32461#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="76" column="40" selection-start-line="76" selection-start-column="40" selection-end-line="76" selection-end-column="40" />
         </state>
       </provider>
     </entry>
