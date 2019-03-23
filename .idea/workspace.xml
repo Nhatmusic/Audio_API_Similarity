@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76e2b8b2-2181-4531-b729-6fad8175de94" name="Default Changelist" comment="" />
+    <list default="true" id="76e2b8b2-2181-4531-b729-6fad8175de94" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -13,38 +16,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="49" column="57" lean-forward="true" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="75" />
+            <state relative-caret-position="456">
+              <caret line="671" column="73" lean-forward="true" selection-start-line="671" selection-start-column="73" selection-end-line="671" selection-end-column="73" />
               <folding>
                 <element signature="e#9886#9949#0" />
                 <element signature="e#11433#12527#0" />
                 <element signature="e#12571#13111#0" />
                 <element signature="e#13894#14782#0" />
                 <element signature="e#14754#19365#0" />
-                <element signature="e#19438#27743#0" />
-                <element signature="e#27778#32461#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Desktop/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="473">
-              <caret line="76" column="40" selection-start-line="76" selection-start-column="40" selection-end-line="76" selection-end-column="40" />
+            <state relative-caret-position="634">
+              <caret line="756" lean-forward="true" selection-start-line="717" selection-start-column="4" selection-end-line="756" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test file api.html">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="252">
+              <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -81,6 +82,9 @@
       <find>threshold</find>
       <find>marginleft</find>
       <find>Relat</find>
+      <find>42</find>
+      <find>hamming</find>
+      <find>Head</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -91,8 +95,8 @@
       <list>
         <option value="$PROJECT_DIR$/test canvas.html" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/test file api.html" />
+        <option value="$PROJECT_DIR$/main.js" />
       </list>
     </option>
   </component>
@@ -124,7 +128,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Sound similarity" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/main.js" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -163,12 +167,12 @@
       <workItem from="1552856024681" duration="3282000" />
       <workItem from="1552923355016" duration="20687000" />
       <workItem from="1553023928910" duration="9746000" />
-      <workItem from="1553266234863" duration="27409000" />
+      <workItem from="1553266234863" duration="28977000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61124000" />
+    <option name="totallyTimeSpent" value="62692000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="3456" height="1416" extended-state="6" />
@@ -228,22 +232,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="49" column="57" lean-forward="true" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="75" />
-          <folding>
-            <element signature="e#9886#9949#0" />
-            <element signature="e#11433#12527#0" />
-            <element signature="e#12571#13111#0" />
-            <element signature="e#13894#14782#0" />
-            <element signature="e#14754#19365#0" />
-            <element signature="e#19438#27743#0" />
-            <element signature="e#27778#32461#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test file api.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -253,8 +241,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="76" column="40" selection-start-line="76" selection-start-column="40" selection-end-line="76" selection-end-column="40" />
+        <state relative-caret-position="252">
+          <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="756" lean-forward="true" selection-start-line="717" selection-start-column="4" selection-end-line="756" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="671" column="73" lean-forward="true" selection-start-line="671" selection-start-column="73" selection-end-line="671" selection-end-column="73" />
+          <folding>
+            <element signature="e#9886#9949#0" />
+            <element signature="e#11433#12527#0" />
+            <element signature="e#12571#13111#0" />
+            <element signature="e#13894#14782#0" />
+            <element signature="e#14754#19365#0" />
+          </folding>
         </state>
       </provider>
     </entry>

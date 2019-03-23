@@ -25,7 +25,7 @@
     return r
 })()({
     1: [function (require, module, exports) {
-// setup init variables
+        // setup init variables
         var mfcc = [];
         var rms = 0;
         var featureType = 'mfcc';
@@ -42,7 +42,7 @@
         all_image = [];
         var Meyda = require('meyda');
 
-//get file directory
+        //get file directory
         window.onload = function () {
             document.getElementById("filepicker").addEventListener("change", function (event) {
                 let files = event.target.files;
@@ -167,7 +167,7 @@
         }
 
 
-//function callback of Meyda Analyzer 1 which calculate mfcc coefficient
+        //function callback of Meyda Analyzer 1 which calculate mfcc coefficient
         function show1(features) {
             mfcc = features[featureType];
             rms = features[featureType2];
@@ -176,7 +176,7 @@
             }
         }
 
-//the function take self_similarity data as an input and then draw the self_similarity matrix
+        //the function take self_similarity data as an input and then draw the self_similarity matrix
         function drawmatrix(self_similarity_data, index, hop, buffer, duration, songname) {
             //scale the self_similarity data value to draw
             var CSM22 = d3.scaleLinear()
@@ -279,7 +279,7 @@
             origin_data1 = [];
         }
 
-//function to process the origin_data to self_similarity data by comparing euclidean distance of every pair of data point
+        //function to process the origin_data to self_similarity data by comparing euclidean distance of every pair of data point
         function predata(origin_data, index) {
 
             // data normalization
@@ -329,7 +329,7 @@
         }
 
 
-// Create Cross similarity Matrix from 2 SSM data
+        // Create Cross similarity Matrix from 2 SSM data
         function comparescore_Euclidean(selfmatrix1, selfmatrix2) {
 
             var crossscore = [];
@@ -352,8 +352,7 @@
             //define the distance between two matrix by get the median distance of all pair
             return math.median(ssmcompare);
         }
-
-//display matrix of distance in svg rect with bipolar color
+        //display matrix of distance in svg rect with bipolar color
         function chart_display(distance_score_data) {
 
             var margin = {top: 50, right: 0, bottom: 100, left: 50}
@@ -468,45 +467,28 @@
                 .attr("font-size", "5px");
 
         }
-
-
         function network_diagram(distance_data, self_similarity_data) {
             var width = 2000,
                 height = 1000;
             var colors = colorbrewer.Spectral[9];
             var dataset = self_similarity_data;
             var scale = d3.scale.linear().domain([math.min(dataset), math.max(dataset)]).range([1, 0]);
-
-            // var colorScale = d3.scale.quantize()
-            //     .domain([1, 0])
-            //     .range(colors);
-
-            //set color for node group
-            // var color = d3.scale.category20();
-
             var force = d3.layout.force()
                 .charge(-120)
                 .linkDistance(150)
                 .size([width, height]);
-
-
             var x = d3.scale.linear()
                 .domain([0, math.max(distance_data)])
                 .range([450, 280])
                 .clamp(true);
-
             var brush = d3.svg.brush()
                 .y(x)
                 .extent([0, 0]);
-
             var svg = d3.select("#network").append("svg")
                 .attr("width", width)
                 .attr("height", height);
-
             var links_g = svg.append("g");
-
             var nodes_g = svg.append("g");
-
             svg.append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(" + (50) + ",0)")
@@ -524,7 +506,6 @@
                 })
                 .attr("class", "halo");
 
-
             var slider = svg.append("g")
                 .attr("class", "slider")
                 .call(brush);
@@ -536,7 +517,6 @@
                 .attr("class", "handle")
                 .attr("transform", "translate(" + (50) + ",0)")
                 .attr("r", 5);
-
 
             svg.append("text")
                 .attr("x", 170)
@@ -618,18 +598,9 @@
                             return d.target.y;
                         });
 
-                    // node.attr("cx", function (d) {
-                    //     return d.x;
-                    // })
-                    //     .attr("cy", function (d) {
-                    //         return d.y;
-                    //     });
                     node.attr("transform", function (d) {
                         return `translate(${d.x - 12},${d.y - 6})`
                     });
-                    // d3.selectAll(".song")[0].forEach((g,index)=>{
-                    //     d3.select(g).attr('transform',`translate(${(nodes[index].x)-20},${(nodes[index].y)-60})`)
-                    // })
                     text.attr("x", function (d) {
                         return d.x;
                     })
@@ -639,12 +610,10 @@
                 });
 
                 force.start();
-
             }
 
             force
                 .nodes(nodes);
-
             var node = nodes_g.selectAll(".node")
                 .data(nodes)
                 .enter().append("g")
@@ -658,38 +627,7 @@
                 .attr('y', 0)
                 .attr('width', 63)
                 .attr('height', 42)
-                .on("click", function (d) {
-                    // Play audio on click
-                    let audioElement;
-                    if (this.getElementsByTagName("audio").length === 0) {
-                        // Create audio object from source url
-                        audioElement = new Audio(d.url);
-                        // Preload audio to improve response times
-                        audioElement.preload = "auto";
-                        // Cache audio for later use to improve performance
-                        this.appendChild(audioElement);
-                        // Play the audio
-                        audioElement.play();
-                    } else {
-                        // Get saved audio element
-                        audioElement = this.getElementsByTagName("audio")[0];
-                        if (isPlaying(audioElement)) {
-                            // Pause if it is playing
-                            audioElement.pause();
-                        } else {
-                            // Play if not already playing
-                            audioElement.play();
-                        }
-                    }
-
-                    function isPlaying(audio) {
-                        return audio
-                            && audio.currentTime > 0  // Audio has started playing
-                            && !audio.paused          // Audio playback is not paused
-                            && !audio.ended           // Audio playback is not ended
-                            && audio.readyState >= 3; // Audio data is available and ready for playback
-                    }
-                });
+                .on("click", function(d){ PlayAudio(this, d) });
 
             var text = svg.append("g")
                 .attr("class", "labels")
@@ -702,6 +640,48 @@
                 .text(function (d) {
                     return d.name
                 })
+                .on("click", function(d){ PlayAudio(this, d) });
+
+            function PlayAudio(thisElement, d) {
+                // Play audio on click
+                let audioElement;
+                if (thisElement.getElementsByTagName("audio").length === 0) {
+                    // Create audio object from source url
+                    audioElement = new Audio(d.url);
+                    // Preload audio to improve response times
+                    audioElement.preload = "auto";
+                    // Cache audio for later use to improve performance
+                    thisElement.appendChild(audioElement);
+                    // Play the audio
+                    audioElement.play();
+                } else {
+                    // Get saved audio element
+                    audioElement = thisElement.getElementsByTagName("audio")[0];
+                    if (audioElement.isPlaying()) {
+                        // Pause if it is playing
+                        audioElement.stop();
+                    } else {
+                        // Play if not already playing
+                        audioElement.play();
+                    }
+                }
+            }
+
+            Audio.prototype.isPlaying = function() {
+                return this
+                    && this.currentTime > 0  // Audio has started playing
+                    && !this.paused          // Audio playback is not paused
+                    && !this.ended           // Audio playback is not ended
+                    && this.readyState >= 3; // Audio data is available and ready for playback
+            };
+
+            Audio.prototype.stop = function() {
+                // Pause the playback
+                this.pause();
+                // Reset the playback time marker
+                this.currentTime = 0;
+            };
+
 
             brush.on("brush", brushed);
 
@@ -715,6 +695,7 @@
         function comparescore_SmithWaterman(selfmatrix1, selfmatrix2) {
             var crossscore = [];
             var crossscore2 = [];
+
             //get distance of all pair between each datapoint of matrix1 and matrix2
             for (var i = 0; i < selfmatrix1.length; i++) {
                 var crossimilarity_matrix = [];
@@ -728,7 +709,6 @@
         }
 
         function SmithWaterman(cross_similarity, crossimilarity_for_binary) {
-
             //Create Cross similarity Matrix from 2 SSM data
             function sortrow(cross_similarity) {
                 //sort the row of cross similarity matrix then take the k*row.length point
@@ -749,7 +729,7 @@
 
 
             function sortcol(cross_similarity) {
-//sort the column
+                //sort the column
                 column = [];
                 column = _.unzip(cross_similarity)
                 sortcolumn = [];
@@ -767,7 +747,7 @@
                 }
             }
 
-//draw binary matrix
+            //draw binary matrix
             function drawbinarymatrix(crossimilarity_for_binary) {
                 for (var i = 0; i < crossimilarity_for_binary.length; i++) {
                     for (var j = 0; j < crossimilarity_for_binary[0].length; j++) {
@@ -779,8 +759,6 @@
                     }
                 }
                 return crossimilarity_for_binary;
-
-
             }
 
             function Delta(a, b) {
@@ -799,7 +777,6 @@
                 matchScore = 1;
                 mismatchScore = -1;
 
-<<<<<<< HEAD
                 if (i == 1) {
                     return mismatchScore
                 } else {
@@ -808,9 +785,9 @@
             }
 
             function score(crossimilarity_for_binary) {
-// N = crossimilarity.length[0]+1
-// M = crossimilarity.length[1]+1
-//math.zeros(math.size(A))
+                // N = crossimilarity.length[0]+1
+                // M = crossimilarity.length[1]+1
+                //math.zeros(math.size(A))
 
                 arr = Array(crossimilarity_for_binary.length + 1).fill(Array(crossimilarity_for_binary[0].length + 1));
                 D = math.zeros(math.size(arr))
@@ -818,22 +795,17 @@
                 for (i = 3; i < D.length; i++) {
                     for (j = 3; j < D[0].length; j++) {
                         MS = Match(crossimilarity_for_binary[i - 1][j - 1])
-//H_(i-1, j-1) + S_(i-1, j-1) + delta(S_(i-2,j-2), S_(i-1, j-1))
+                        //H_(i-1, j-1) + S_(i-1, j-1) + delta(S_(i-2,j-2), S_(i-1, j-1))
                         d1 = D[i - 1][j - 1] + MS + Delta(crossimilarity_for_binary[i - 2][j - 2], crossimilarity_for_binary[i - 1][j - 1])
-//H_(i-2, j-1) + S_(i-1, j-1) + delta(S_(i-3, j-2), S_(i-1, j-1))
+                        //H_(i-2, j-1) + S_(i-1, j-1) + delta(S_(i-3, j-2), S_(i-1, j-1))
                         d2 = D[i - 2][j - 1] + MS + Delta(crossimilarity_for_binary[i - 3][j - 2], crossimilarity_for_binary[i - 1][j - 1])
-//H_(i-1, j-2) + S_(i-1, j-1) + delta(S_(i-2, j-3), S_(i-1, j-1))
+                        //H_(i-1, j-2) + S_(i-1, j-1) + delta(S_(i-2, j-3), S_(i-1, j-1))
                         dd3 = D[i - 1][j - 2] + MS + Delta(crossimilarity_for_binary[i - 2][j - 3], crossimilarity_for_binary[i - 1][j - 1])
                         D[i][j] = math.max(d1, d2, dd3, 0)
                     }
-
                 }
-
                 return math.max(D);
-
             }
-
-
             sortrow(cross_similarity);
             sortcol(cross_similarity);
             drawbinarymatrix(crossimilarity_for_binary);
@@ -996,218 +968,6 @@
 
                 /***/ "./node_modules/assert/assert.js":
                 /*!***************************************!*\
-=======
-    force
-        .nodes(nodes);
-
-    // var node = nodes_g.selectAll(".node")
-    //     .data(nodes).enter()
-    //     .append("g")
-    //     // .attr("transform", function (song,i){ if (i<5) {return `translate(${i*200},${0})`}
-    //     // else return `translate(${(i-5)*200},${200})` })
-    //     // .attr("id", function (d,i){return "song"+ i})
-    //     .attr("class","song")
-    //     .call(force.drag)
-    //     .selectAll("g")
-    //     .data(data=>data)
-    //     .enter()
-    //     .append("g")
-    //     .attr("transform", (d, i) => `translate(${ 0}, ${i/2 })`)
-    //     .selectAll("rect")
-    //     .data(function (d) {
-    //         return d
-    //     })
-    //     .enter()
-    //     .append("rect")
-    //     .attr("x", function (d, i) {
-    //         return i/2;
-    //     })
-    //     .attr("y", 0)
-    //     .attr("height", 2)
-    //     .attr("width", 2)
-    //     .attr("transform", "translate(20,50)")
-    //     .style("fill", function (d) {
-    //         return d3.hsl(257*scale(d),1,0.5).hex(0);
-    //     });
-    var node = nodes_g.selectAll(".node")
-        .data(nodes)
-        .enter().append("g")
-        .attr("class", "node")
-        .call(force.drag);
-      node.append('svg:image')
-      .attr('xlink:href', function(d){ return d.image; })
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('width', 63)
-      .attr('height', 42)
-      .on("click", function(d){ PlayAudio(this, d) });
-
-    var text = svg.append("g")
-        .attr("class", "labels")
-        .selectAll("text")
-        .data(nodes)
-        .enter().append("text")
-        .attr("dx", 0)
-        .attr("dy", "-1.2em")
-        .attr("font-size", "10px")
-        .text(function (d) {
-            return d.name
-        })
-        .on("click", function(d){ PlayAudio(this, d) });
-    
-    function PlayAudio(thisElement, d) {
-        // Play audio on click
-        let audioElement;
-        if (thisElement.getElementsByTagName("audio").length === 0) {
-            // Create audio object from source url
-            audioElement = new Audio(d.url);
-            // Preload audio to improve response times
-            audioElement.preload = "auto";
-            // Cache audio for later use to improve performance
-            thisElement.appendChild(audioElement);
-            // Play the audio
-            audioElement.play();
-        } else {
-            // Get saved audio element
-            audioElement = thisElement.getElementsByTagName("audio")[0];
-            if (audioElement.isPlaying()) {
-                // Pause if it is playing
-                audioElement.stop();
-            } else {
-                // Play if not already playing
-                audioElement.play();
-            }
-        }
-    }
-    
-    Audio.prototype.isPlaying = function() {
-        return this
-            && this.currentTime > 0  // Audio has started playing
-            && !this.paused          // Audio playback is not paused
-            && !this.ended           // Audio playback is not ended
-            && this.readyState >= 3; // Audio data is available and ready for playback
-    };
-    
-    Audio.prototype.stop = function() {
-        // Pause the playback
-        this.pause();
-        // Reset the playback time marker
-        this.currentTime = 0;
-    };
-
-    brush.on("brush", brushed);
-
-    slider
-        .call(brush.extent([0, 0]))
-        .call(brush.event);
-}
-
-
-
-
-
-},{"meyda":2}],2:[function(require,module,exports){
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["Meyda"] = factory();
-	else
-		root["Meyda"] = factory();
-})(window, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ "./node_modules/assert/assert.js":
-/*!***************************************!*\
->>>>>>> b8b82e76c95b0ed7b3430d0fed64c8dd698598d2
   !*** ./node_modules/assert/assert.js ***!
   \***************************************/
                 /*! no static exports found */
