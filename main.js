@@ -30,42 +30,38 @@
         var rms = 0;
         var featureType = 'mfcc';
         var featureType2 = 'rms';
-        var count = 0;
         var origin_data1 = [];
         var marginleft = 50;
         var matrixgap = 400;
-        var durations = 4;
+         durations = 4;
         var windowsize = 4096;
         totaldata = [];
-        var url = [];
+        audio_label = [];
         var count_position = 0;
         all_image = [];
         var Meyda = require('meyda');
 
+
+
         //get file directory
         window.onload = function () {
+            d3.select("#loader").style("opacity", 1.0).style("display", "none");
             document.getElementById("filepicker").addEventListener("change", function (event) {
                 let files = event.target.files;
+                fileContent=[];
                 for (i = 0; i < files.length; i++) {
-                    url.push("./all-samples/" + files[i].webkitRelativePath)
+                    audio_label.push(files[i].name)
+                    fileContent.push(URL.createObjectURL(files[i]));
                 }
-                console.log(url)
-                getData(url[0], 0)
+
+                getData(fileContent[0],0)
             }, false);
 
         }
 
 
         function getData(a, index) {
-            //get audio label
-            var labelholder1 = [];
-            var labelholder2 = [];
-            audio_label = [];
-            for (i = 0; i < url.length; i++) {
-                labelholder1.push(url[i].split("/"))
-                labelholder2.push(labelholder1[i][3].split("."))
-                audio_label.push(labelholder2[i][0])
-            }
+
 
             //Create audioContext to decode the audio data later
             var audioCtx = new AudioContext();
@@ -82,9 +78,12 @@
             //The response is a JavaScript ArrayBuffer containing binary data.
             request.responseType = 'arraybuffer';
 
+            d3.select("#loader").style("opacity", 1.0).style("display", "block");
+
             //return the audio data to audioData variable type arraybuffer
 
             request.onload = function () {
+
                 audioData = request.response;
                 //decode the audio data from array buffer and stored to AudioBufferSourceNode
                 audioCtx.decodeAudioData(audioData, function (buffer) {
@@ -143,17 +142,18 @@
                             var matrix11 = predata(matrix1, index);
 
                             //draw self_similarity matrix1
-                            drawmatrix(matrix11, index, hop, buf, dur, url[index]);
+                            drawmatrix(matrix11, index, hop, buf, dur, audio_label[index]);
                             ++index;
-                            if (index < url.length) {
-                                getData(url[index], index)
+
+                            if (index < fileContent.length) {
+                                getData(fileContent[index], index)
                             }
                         }
 
                     } else {
-                        url.splice(index, 1)
+                        fileContent.splice(index, 1)
                         audio_label.splice(index, 1)
-                        getData(url[index], index)
+                        getData(fileContent[index], index)
 
                     }
                 }).catch(function (err) {
@@ -181,7 +181,7 @@
             //scale the self_similarity data value to draw
             var CSM22 = d3.scaleLinear()
                 .domain([math.min(self_similarity_data), math.max(self_similarity_data)])
-                .range([1, 0]);
+                .range([0, 1]);
 
             var scaled_self_similarity_data = [];
             for (var i = 0; i < self_similarity_data.length; i++) {
@@ -231,7 +231,7 @@
             ctx.clearRect(0, 0, 100, 100);
 
             console.log("I am calculating the distance");
-            if (index == (url.length - 1)) {
+            if (index == (fileContent.length - 1)) {
                 var totalscore = [];
                 for (i = 0; i < totaldata.length - 1; i++) {
                     var scorefinal = [];
@@ -286,7 +286,6 @@
             var normalized_data = [];
             for (var i = 0; i < origin_data.length; i++) {
                 var data1 = [];
-
                 var average = math.mean(origin_data[i]);
                 for (var j = 0; j < origin_data[0].length; j++) {
                     data1.push((origin_data[i][j] - average) / math.norm(origin_data[i][j] - average));
@@ -299,7 +298,8 @@
             for (var i = 0; i < normalized_data.length; i++) {
                 var data2 = [];
                 for (var j = 0; j < normalized_data.length; j++) {
-                    data2.push(euclideanDistance(normalized_data[i], normalized_data[j]))
+                    // data2.push(euclideanDistance(normalized_data[i], normalized_data[j]))
+                    data2.push(math.multiply(normalized_data[i],normalized_data[j])/(math.norm(normalized_data[i])*math.norm(normalized_data[j])));
                 }
                 self_similarity_data.push(data2);
             }
@@ -356,10 +356,10 @@
         function chart_display(distance_score_data) {
 
             var margin = {top: 50, right: 0, bottom: 100, left: 50}
-            var width = 3000 - margin.left - margin.right;
-            var height = 3000 - margin.top - margin.bottom;
+            var width = 1000 - margin.left - margin.right;
+            var height = 1000 - margin.top - margin.bottom;
             var gridSize = 20;
-            var colors = colorbrewer.RdBu[9];
+            var colors = colorbrewer.Spectral[9];
             var cellSize = 10
             var legendElementWidth = 20
             var dataset = distance_score_data;
@@ -378,7 +378,7 @@
                 .style("position", "absolute")
                 .style("visibility", "hidden");
             var svg = d3.select("#chart").append("svg")
-                .attr("width", width + 800 + margin.left + margin.right)
+                .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -394,7 +394,7 @@
                 .data(dataset)
                 .enter()
                 .append("g")
-                .attr("transform", (d, i) => `translate(${i * gridSize}, ${i * (gridSize)})`)
+                .attr("transform", (d, i) => `translate(${i * (gridSize-5)}, ${i * (gridSize-5)})`)
                 .selectAll("rect")
                 .data(function (row, rownumber) {
                     row_label = rownumber;
@@ -405,17 +405,17 @@
                 .enter()
                 .append("rect")
                 .attr("x", function (d, i) {
-                    return i * gridSize;
+                    return i * (gridSize-5);
                 })
                 .attr("y", 0)
-                .attr("height", 10)
-                .attr("width", 10)
+                .attr("height", 8)
+                .attr("width", 8)
                 .attr("transform", "translate(55,20)")
                 .attr("class", ".tooltip")
                 .style("fill", "green")
                 .on('mouseover', function (d, i) {
                     if (d != null) {
-                        tooltip.html('<div class="heatmap_tooltip">' + d.label[i] + ": " + d.value.toFixed(2) + '</div>');
+                        tooltip.html('<div class="tooltip">' + d.label[i] + ": " + d.value.toFixed(2) + '</div>');
                         tooltip.style("visibility", "visible");
                     } else
                         tooltip.style("visibility", "hidden");
@@ -424,7 +424,7 @@
                     tooltip.style("visibility", "hidden");
                 })
                 .on("mousemove", function (d, i) {
-                    tooltip.style("top", (d3.event.pageY - 55) + "px").style("left", (d3.event.pageX - 60) + "px");
+                    tooltip.style("top", (d3.event.pageY-130) + "px").style("left", (d3.event.pageX - 1050) + "px");
                 })
                 .transition().duration(500)
                 .style("fill", function (d) {
@@ -458,7 +458,7 @@
             legend.append("text")
                 .attr("class", "mono legendElement")
                 .text(function (d) {
-                    return "≥" + Math.round(d * 100) / 100;
+                    return ">" + Math.round(d * 100) / 100;
                 })
                 .attr("x", function (d, i) {
                     return legendElementWidth * i;
@@ -468,7 +468,8 @@
 
         }
         function network_diagram(distance_data, self_similarity_data) {
-            var width = 2000,
+            d3.select("#loader").style("opacity", 1.0).style("display", "none");
+            var width = 1000,
                 height = 1000;
             var colors = colorbrewer.Spectral[9];
             var dataset = self_similarity_data;
@@ -486,7 +487,8 @@
                 .extent([0, 0]);
             var svg = d3.select("#network").append("svg")
                 .attr("width", width)
-                .attr("height", height);
+                .attr("height", height)
+                .attr("transform","translate(" + (50) + ",-200)")
             var links_g = svg.append("g");
             var nodes_g = svg.append("g");
             svg.append("g")
@@ -519,7 +521,7 @@
                 .attr("r", 5);
 
             svg.append("text")
-                .attr("x", 170)
+                .attr("x", 150)
                 .attr("y", 250)
                 .attr("text-anchor", "end")
                 .attr("font-size", "12px")
@@ -530,7 +532,7 @@
             var nodes = totaldata;
             nodes.forEach((d, i) => {
                 d.name = audio_label[i];
-                d.url = url[i]
+                d.url = fileContent[i]
                 d.image = all_image[i];
             })
 
@@ -813,6 +815,7 @@
             return score(crossimilarity_for_binary)
 
         }
+
 
 
     }, {"meyda": 2}], 2: [function (require, module, exports) {
