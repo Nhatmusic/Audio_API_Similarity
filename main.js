@@ -381,23 +381,25 @@
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                .attr("transform", "translate(" + margin.left + ",-20)");
 
-            var scale = d3.scale.linear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
+
+             var scale = d3.scale.linear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
 
             var colorScale = d3.scale.quantize()
                 .domain([0, 1])
                 .range(colors)
 
-            var row_label = [];
+            var row_label_index = [];
+
             var draw = svg.selectAll("g")
                 .data(dataset)
                 .enter()
                 .append("g")
-                .attr("transform", (d, i) => `translate(${i * (gridSize-5)}, ${i * (gridSize-5)})`)
+                .attr("transform", (d, i) => `translate(${(i+10) * ((gridSize)-5)}, ${(i+10) * ((gridSize)-5)})`)
                 .selectAll("rect")
                 .data(function (row, rownumber) {
-                    row_label = rownumber;
+                    row_label_index = rownumber;
                     return row.map(d => {
                         return {label: label[rownumber], value: d}
                     });
@@ -415,7 +417,8 @@
                 .style("fill", "green")
                 .on('mouseover', function (d, i) {
                     if (d != null) {
-                        tooltip.html('<div class="tooltip">' + d.label[i] + ": " + d.value.toFixed(2) + '</div>');
+                        // tooltip.html('<div class="tooltip">' + d.label[i] + ": " + d.value.toFixed(2) + '</div>');
+                        tooltip.html('<div class="tooltip">' + d.value.toFixed(2) + '</div>');
                         tooltip.style("visibility", "visible");
                     } else
                         tooltip.style("visibility", "hidden");
@@ -424,19 +427,52 @@
                     tooltip.style("visibility", "hidden");
                 })
                 .on("mousemove", function (d, i) {
-                    tooltip.style("top", (d3.event.pageY-130) + "px").style("left", (d3.event.pageX - 1050) + "px");
+                    tooltip.style("top", (d3.event.pageY-135) + "px").style("left", (d3.event.pageX - 1025) + "px");
                 })
                 .transition().duration(500)
                 .style("fill", function (d) {
                     return colorScale(scale(d.value));
                 });
 
+            var col_label=audio_label.slice(0,audio_label.length-1);
+            var row_label=audio_label.slice(1,audio_label.length);
+
+            var rowLabels = svg.append("g")
+                .selectAll(".rowLabelg")
+                .data(row_label)
+                .enter()
+                .append("text")
+                .text(function (d) { return d; })
+                .attr("x", function (d, i) { return i * 15; })
+                .attr("y", function (d, i) { return i * (gridSize-5); })
+                .attr("font-size", "8px")
+                .style("text-anchor", "end")
+                .attr("transform", "translate("+195+ ",175)")
+                .attr("class", function (d,i) { return "rowLabel mono r"+i;} )
+                .on("mouseover", function(d) {d3.select(this).classed("text-hover",true);})
+                .on("mouseout" , function(d) {d3.select(this).classed("text-hover",false);});
+
+            var colLabels = svg.append("g")
+                .selectAll(".colLabelg")
+                .data(col_label)
+                .enter()
+                .append("text")
+                .text(function (d) { return d; })
+                .attr("x", 5)
+                .attr("y", function (d, i) { return i * (gridSize-5); })
+                .attr("font-size", "8px")
+                .style("text-anchor", "left")
+                .attr("transform", "translate("+210 + ",165) rotate(270)")
+                .attr("class",  function (d,i) { return "colLabel mono c"+i;} )
+                .on("mouseover", function(d) {d3.select(this).classed("text-hover",true);})
+                .on("mouseout" , function(d) {d3.select(this).classed("text-hover",false);});
+
+
             //create legend bar to show the level of each chroma feature in color. Domain of chroma  [0,1]
             var legend = svg.append("g")
                 .attr("class", "legend")
                 .attr("transform",
-                    "translate(" + -10 + " ," +
-                    (-20) + ")")
+                    "translate(0,0)")
                 .selectAll(".legendElement")
                 .data([0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9])
                 .enter().append("g")
@@ -467,20 +503,24 @@
                 .attr("font-size", "5px");
 
         }
-        function network_diagram(distance_data, self_similarity_data) {
+        function network_diagram(distance_data) {
             d3.select("#loader").style("opacity", 1.0).style("display", "none");
             var width = 1000,
                 height = 1000;
             var colors = colorbrewer.Spectral[9];
-            var dataset = self_similarity_data;
-            var scale = d3.scale.linear().domain([math.min(dataset), math.max(dataset)]).range([1, 0]);
+            var dataset=distance_data;
+            var scale = d3.scale.linear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
+
+            var colorScale = d3.scale.quantize()
+                .domain([0, 1])
+                .range(colors)
             var force = d3.layout.force()
                 .charge(-120)
                 .linkDistance(150)
                 .size([width, height]);
             var x = d3.scale.linear()
                 .domain([0, math.max(distance_data)])
-                .range([450, 280])
+                .range([280, 450])
                 .clamp(true);
             var brush = d3.svg.brush()
                 .y(x)
@@ -488,12 +528,13 @@
             var svg = d3.select("#network").append("svg")
                 .attr("width", width)
                 .attr("height", height)
-                .attr("transform","translate(" + (50) + ",-200)")
-            var links_g = svg.append("g");
-            var nodes_g = svg.append("g");
+                .attr("transform","translate(0,-200)")
+            var links_g = svg.append("g").attr("transform","translate(-200,0)");
+            var nodes_g = svg.append("g").attr("transform","translate(-200,0)");
+
             svg.append("g")
+                .attr("transform", "translate(-220,250),rotate(270)")
                 .attr("class", "x axis")
-                .attr("transform", "translate(" + (50) + ",0)")
                 .call(d3.svg.axis()
                     .scale(x)
                     .orient("left")
@@ -510,6 +551,7 @@
 
             var slider = svg.append("g")
                 .attr("class", "slider")
+                .attr("transform", "translate(-220,300),rotate(270)")
                 .call(brush);
 
             slider.selectAll(".extent,.resize")
@@ -521,8 +563,8 @@
                 .attr("r", 5);
 
             svg.append("text")
-                .attr("x", 150)
-                .attr("y", 250)
+                .attr("x", 200)
+                .attr("y", 220)
                 .attr("text-anchor", "end")
                 .attr("font-size", "12px")
                 .style("opacity", 0.5)
@@ -557,8 +599,6 @@
 
             function brushed() {
                 var value = brush.extent()[0];
-
-
                 if (d3.event.sourceEvent) {
                     value = x.invert(d3.mouse(this)[1]);
                     brush.extent([value, value]);
@@ -581,8 +621,9 @@
                 link.enter().append("line")
                     .attr("class", "link")
                     .style("stroke-width", function (d) {
-                        return Math.sqrt(d.value);
-                    });
+                        return Math.sqrt(d.value);})
+                    .style("stroke", function(d) { return colorScale(scale(d.value)) });
+
 
                 link.exit().remove();
 
@@ -642,6 +683,7 @@
                 .text(function (d) {
                     return d.name
                 })
+                .attr("transform","translate(-200,0)")
                 .on("click", function(d){ PlayAudio(this, d) });
 
             function PlayAudio(thisElement, d) {

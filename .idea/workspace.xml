@@ -21,26 +21,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="84" column="31" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="56" column="53" lean-forward="true" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+            <state relative-caret-position="187">
+              <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="144">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="12" column="54" lean-forward="true" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+            <state relative-caret-position="3043">
+              <caret line="220" column="48" lean-forward="true" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -56,19 +56,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>audio_label</find>
-      <find>compare</find>
-      <find>totalscore</find>
-      <find>dataset</find>
-      <find>d3</find>
-      <find>Smith</find>
-      <find>scorefinal</find>
-      <find>comparescore1</find>
-      <find>console</find>
-      <find>console.log</find>
-      <find>threshold</find>
-      <find>marginleft</find>
-      <find>Relat</find>
       <find>42</find>
       <find>hamming</find>
       <find>Head</find>
@@ -78,14 +65,27 @@
       <find>count</find>
       <find>Element</find>
       <find>ElementbyId</find>
-      <find>network</find>
       <find>filepick</find>
-      <find>tool</find>
       <find>loader</find>
       <find>chart</find>
       <find>body</find>
       <find>label</find>
       <find>&quot;Euc</find>
+      <find>link</find>
+      <find>translate</find>
+      <find>tick</find>
+      <find>totalscore</find>
+      <find>row_label</find>
+      <find>margin.left</find>
+      <find>chart_display</find>
+      <find>cellSize</find>
+      <find>tooltip</find>
+      <find>Eucl</find>
+      <find>network</find>
+      <find>tool</find>
+      <find>self_similarity_data</find>
+      <find>totaldata</find>
+      <find>draw</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -96,8 +96,8 @@
       <list>
         <option value="$PROJECT_DIR$/test canvas.html" />
         <option value="$PROJECT_DIR$/test file api.html" />
-        <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/main.js" />
       </list>
     </option>
@@ -141,7 +141,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Sound similarity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CS5331_Spring2019" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -181,12 +181,12 @@
       <workItem from="1552923355016" duration="20687000" />
       <workItem from="1553023928910" duration="9746000" />
       <workItem from="1553266234863" duration="55627000" />
-      <workItem from="1553547923212" duration="3890000" />
+      <workItem from="1553547923212" duration="30197000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93232000" />
+    <option name="totallyTimeSpent" value="119539000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
@@ -247,22 +247,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="84" column="31" selection-start-line="84" selection-start-column="31" selection-end-line="84" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="54" lean-forward="true" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+        <state relative-caret-position="187">
+          <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="56" column="53" lean-forward="true" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+        <state relative-caret-position="144">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3043">
+          <caret line="220" column="48" lean-forward="true" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
         </state>
       </provider>
     </entry>
