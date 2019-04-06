@@ -31,21 +31,16 @@
         var featureType = 'mfcc';
         var featureType2 = 'rms';
         var origin_data1 = [];
-        var marginleft = 50;
-        var matrixgap = 400;
-         durations = 4;
         var windowsize = 4096;
+        durations = 4;
         totaldata = [];
         audio_label = [];
-        var count_position = 0;
         all_image = [];
         var Meyda = require('meyda');
 
-
-
         //get file directory
         window.onload = function () {
-            d3.select("#loader").style("opacity", 1.0).style("display", "none");
+            d3.select("#loader").style("display", "none");
             document.getElementById("filepicker").addEventListener("change", function (event) {
                 let files = event.target.files;
                 fileContent=[];
@@ -53,10 +48,8 @@
                     audio_label.push(files[i].name)
                     fileContent.push(URL.createObjectURL(files[i]));
                 }
-
                 getData(fileContent[0],0)
             }, false);
-
         }
 
 
@@ -78,12 +71,10 @@
             //The response is a JavaScript ArrayBuffer containing binary data.
             request.responseType = 'arraybuffer';
 
-            d3.select("#loader").style("opacity", 1.0).style("display", "block");
-
             //return the audio data to audioData variable type arraybuffer
 
             request.onload = function () {
-
+                d3.select("#loader").style("display", "block");
                 audioData = request.response;
                 //decode the audio data from array buffer and stored to AudioBufferSourceNode
                 audioCtx.decodeAudioData(audioData, function (buffer) {
@@ -92,13 +83,27 @@
                     //find the duration of the audio in second after decoding
                     var duration1 = 0;
                     duration1 = source.buffer.duration;
-                    if (duration1 < durations) {
+                    if (duration1 > durations) {
+                        fileContent.splice(index, 1)
+                        audio_label.splice(index, 1)
+                        if (index == fileContent.length) {
+                            var index1=0
+                            //draw self_similarity matrix1
+                            drawmatrix(totaldata[index1], index1);
 
+                        }
+                        else {
+                            getData(fileContent[index], index)
+                        }
+
+                    }
+                    else {
                         //create offline audio context to render the decoding audio data then use the offline audio context and another audio buffer source node as inputs to Meyda Analyzer
                         var offlineCtx = new OfflineAudioContext(1, 44100 * duration1, 44100);
 
                         //create buffer source node which is used in Meyda Analyzer
                         var source11 = offlineCtx.createBufferSource();
+
                         //store the audio data to the buffer source node again
                         source11.buffer = buffer;
 
@@ -115,11 +120,12 @@
                             'melBands': 26,
                             'sampleRate': 44100,
                             'bufferSize': windowsize,
-                            'hopSize': windowsize / (durations / duration1),
+                            'hopSize': windowsize/(durations/duration1),
                             'numberOfMFCCCoefficients': 20,
                             'featureExtractors': [featureType, featureType2],
                             'callback': show1
                         });
+
                         //start Meyda Analyzer
                         meydaAnalyzer1.start();
                         var hop = Meyda.hopSize;
@@ -134,33 +140,29 @@
 
                             //copy the data generated from Meyda Analyzer 1
                             var matrix1 = [];
+
                             //origin_data1 is generated from function show1 of Meyda Analyzer 1
                             var matrix1 = origin_data1;
-
-                            var matrix11 = [];
                             //Create self_similarity data based on origin_data by calculate Euclidean distance between each pair of data point of origin_data
+                            var matrix11 = [];
                             var matrix11 = predata(matrix1, index);
-
-                            //draw self_similarity matrix1
-                            drawmatrix(matrix11, index, hop, buf, dur, audio_label[index]);
                             ++index;
-
                             if (index < fileContent.length) {
+                                origin_data1=[];
                                 getData(fileContent[index], index)
                             }
+                            else if (index == fileContent.length)
+                            {
+                                var index1=0
+                                //draw self_similarity matrix1
+                                drawmatrix(totaldata[index1], index1);
+                            }
                         }
-
-                    } else {
-                        fileContent.splice(index, 1)
-                        audio_label.splice(index, 1)
-                        getData(fileContent[index], index)
-
                     }
                 }).catch(function (err) {
                     console.log('Rendering failed: ' + err);
                     // Note: The promise should reject when startRendering is called a second time on an OfflineAudioContext
                 });
-
             };
             request.send();
             return 0;
@@ -176,112 +178,8 @@
             }
         }
 
-        //the function take self_similarity data as an input and then draw the self_similarity matrix
-        function drawmatrix(self_similarity_data, index, hop, buffer, duration, songname) {
-            //scale the self_similarity data value to draw
-            var CSM22 = d3.scaleLinear()
-                .domain([math.min(self_similarity_data), math.max(self_similarity_data)])
-                .range([0, 1]);
-
-            var scaled_self_similarity_data = [];
-            for (var i = 0; i < self_similarity_data.length; i++) {
-                var CSM44 = [];
-                for (var j = 0; j < self_similarity_data[0].length; j++) {
-                    CSM44.push(CSM22(self_similarity_data[i][j]))
-
-                }
-                scaled_self_similarity_data.push(CSM44);
-
-            }
-
-            //Create color data from scaled_self_similarity_data
-            var color_data = [];
-            for (var i = 0; i < scaled_self_similarity_data.length; i++) {
-                var data3 = [];
-                for (var j = 0; j < scaled_self_similarity_data[0].length; j++) {
-                    //get R G B value after convert scaled self similarity data to HSL color scale
-                    data3.push(d3.rgb(d3.hsl(scaled_self_similarity_data[i][j] * 257, 1, 0.5)));
-                }
-                color_data.push(data3);
-            }
-
-            var c = document.getElementById("myCanvas");
-            var ctx = c.getContext("2d");
-            // define the size of image
-            var imgData = ctx.createImageData(color_data[0].length, color_data.length);
-            //draw each pixel, one pixel contain 4 values (R G B A),
-            for (var i = 0; i < color_data.length; i++) {
-                for (var j = 0; j < color_data[0].length; j++) {
-
-                    //each step is 4, the next pixel value have index in position 4 5 6 7,
-                    var pos = (i * color_data[0].length + j) * 4;
-                    imgData.data[pos + 0] = color_data[i][j].r;
-                    imgData.data[pos + 1] = color_data[i][j].g;
-                    imgData.data[pos + 2] = color_data[i][j].b;
-                    imgData.data[pos + 3] = 255;
-                }
-            }
-            //define where to put the image in canvas
-            ctx.putImageData(imgData, 0, 0);
-            //save canvas to png image then call back to use in network diagram
-            var imagedata = c.toDataURL("image/png").replace("image/png", "image/octet-stream");
-
-            all_image.push(imagedata);
-            //clear canvas everytime draw matrix
-            ctx.clearRect(0, 0, 100, 100);
-
-            console.log("I am calculating the distance");
-            if (index == (fileContent.length - 1)) {
-                var totalscore = [];
-                for (i = 0; i < totaldata.length - 1; i++) {
-                    var scorefinal = [];
-                    for (j = i + 1; j < totaldata.length; j++) {
-
-                        //Calculate distance based on SmithWaterman
-                        // scorefinal.push(SmithWaterman(comparescore_SmithWaterman(totaldata[i], totaldata[j])[0],comparescore_SmithWaterman(totaldata[i], totaldata[j])[1]))
-
-                        //Calculate distance based on Euclidean Distance
-                        scorefinal.push(comparescore_Euclidean(totaldata[i], totaldata[j]))
-                    }
-                    totalscore.push(scorefinal)
-
-                }
-                //Display distance pair in heatmap
-                chart_display(totalscore);
-                //Display distance in network diagram
-                network_diagram(totalscore, totaldata)
-            }
-
-            // Define the position to draw self_similarity matrix on canvas
-            //  var position = 1;
-            //
-            //  if (index < 15) {
-            //      ctx.putImageData(imgData, index * (matrixgap) + marginleft, 150);
-            //  } else {
-            //      index = index%15;
-            //      if(index==0) {
-            //          count_position++
-            //      }
-            //      position = count_position*(position * 8);
-            //      ctx.putImageData(imgData, (index) * (matrixgap) + marginleft, 500*(count_position))
-            //      console.log("i count"+count_position)
-            //
-            //  }
-            //
-            //  //label the matrix by name, hopsize, buffersize, duration
-            //  ctx.font = "20px Arial";
-            //  ctx.fillText("Audio: " + songname, index * (matrixgap) + marginleft, 50 * position);
-            //  ctx.fillText("Hopsize: " + hop.toFixed(0), index * (matrixgap) + marginleft, 50 * position + 30);
-            //  ctx.fillText("Buffersize: " + buffer, index * (matrixgap) + marginleft, 50 * position + 60);
-            //  ctx.fillText("Duration: " + duration.toFixed(2), index * (matrixgap) + marginleft, 50 * position + 90);
-            //  console.log("I am drawing")
-            //reset the origin_data from Meyda Analyzer for next use
-            origin_data1 = [];
-        }
-
         //function to process the origin_data to self_similarity data by comparing euclidean distance of every pair of data point
         function predata(origin_data, index) {
-
             // data normalization
             var normalized_data = [];
             for (var i = 0; i < origin_data.length; i++) {
@@ -291,6 +189,7 @@
                     data1.push((origin_data[i][j] - average) / math.norm(origin_data[i][j] - average));
                 }
                 normalized_data.push(data1);
+
             }
 
             //calculate euclidean distance between two mfcc vector->create self similarity matrix
@@ -307,7 +206,6 @@
             totaldata.push(self_similarity_data)
             return self_similarity_data;
         }
-
 
         function euclideanDistance(a, b) {
             var sum = 0;
@@ -328,6 +226,90 @@
             return sum
         }
 
+        //the function take self_similarity data as an input and then draw the self_similarity matrix
+        function drawmatrix(self_similarity_data, index1) {
+            //scale the self_similarity data value to draw
+            var CSM22 = d3.scaleLinear()
+                .domain([math.min(totaldata), math.max(totaldata)])
+                .range([0, 1]);
+            var scaled_self_similarity_data = [];
+            for (var i = 0; i < self_similarity_data.length; i++) {
+                var CSM44 = [];
+                for (var j = 0; j < self_similarity_data[0].length; j++) {
+                    CSM44.push(CSM22(self_similarity_data[i][j]))
+                }
+                scaled_self_similarity_data.push(CSM44);
+            }
+            //Create color data from scaled_self_similarity_data
+            var color_data = [];
+            for (var i = 0; i < scaled_self_similarity_data.length; i++) {
+                var data3 = [];
+                for (var j = 0; j < scaled_self_similarity_data[0].length; j++) {
+                    //get R G B value after convert scaled self similarity data to HSL color scale
+                    data3.push(d3.rgb(d3.hsl(scaled_self_similarity_data[i][j] * 257, 1, 0.5)));
+                }
+                color_data.push(data3);
+            }
+            var c = document.getElementById("myCanvas");
+            c.width=color_data.length;
+            c.height=color_data.length;
+            var ctx = c.getContext("2d");
+            // define the size of image
+            var imgData = ctx.createImageData(color_data[0].length, color_data.length);
+            //draw each pixel, one pixel contain 4 values (R G B A),
+            for (var i = 0; i < color_data.length; i++) {
+                for (var j = 0; j < color_data[0].length; j++) {
+                    //each step is 4, the next pixel value have index in position 4 5 6 7,
+                    var pos = (i * color_data[0].length + j) * 4;
+                    imgData.data[pos + 0] = color_data[i][j].r;
+                    imgData.data[pos + 1] = color_data[i][j].g;
+                    imgData.data[pos + 2] = color_data[i][j].b;
+                    imgData.data[pos + 3] = 255;
+                }
+            }
+            //define where to put the image in canvas
+            ctx.putImageData(imgData, 0, 0);
+            //save canvas to png image then call back to use in network diagram
+            var imagedata = c.toDataURL("image/png").replace("image/png", "image/octet-stream");
+            all_image.push(imagedata);
+
+            //clear canvas everytime draw matrix
+            ctx.clearRect(0, 0, 100, 100);
+            ++index1;
+            if (index1 < fileContent.length) {
+
+                drawmatrix(totaldata[index1], index1)
+            }
+
+            console.log("I am calculating the distance");
+            if (index1 == (fileContent.length-1)) {
+                // var tsne_score=[]
+                // tsne_score=tsne_comparision();
+                var totalscore = [];
+                for (i = 0; i < totaldata.length - 1; i++) {
+                    var scorefinal = [];
+                    for (j = i + 1; j < totaldata.length; j++) {
+
+                        //Calculate distance based on SmithWaterman
+                        // scorefinal.push(SmithWaterman(comparescore_SmithWaterman(totaldata[i], totaldata[j])[0],comparescore_SmithWaterman(totaldata[i], totaldata[j])[1]))
+
+                        //Calculate distance based on Euclidean Distance
+                        scorefinal.push(comparescore_Euclidean(totaldata[i], totaldata[j]))
+
+                        //Calculate distance based on T-sne output and Euclidean Distance
+                        // scorefinal.push(euclideanDistance(tsne_score[i],tsne_score[j]))
+                    }
+                    totalscore.push(scorefinal)
+                }
+                console.log(totalscore)
+                //Display distance pair in heatmap
+                chart_display(totalscore);
+                //Display distance in network diagram
+                network_diagram(totalscore)
+            }
+            //reset the origin_data from Meyda Analyzer for next use
+            // origin_data1 = [];
+        }
 
         // Create Cross similarity Matrix from 2 SSM data
         function comparescore_Euclidean(selfmatrix1, selfmatrix2) {
@@ -348,21 +330,42 @@
                 ssmcompare.push(math.min(crossscore[i]))
 
             }
-
             //define the distance between two matrix by get the median distance of all pair
             return math.median(ssmcompare);
         }
+
+        function tsne_comparision(){
+
+            const opt = {}
+            var tsne_score=[];
+            opt.epsilon = 1; // epsilon is learning rate (10 = default)
+            opt.perplexity = 30; // roughly how many neighbors each point influences (30 = default)
+            opt.dim = 2; // dimensionality of the embedding (2 = default)
+
+            const tsne = new tsnejs.tSNE(opt); // create a tSNE instance
+
+            tsne.initDataDist(totaldata);
+            tsne_score=tsne.getSolution()
+
+            return tsne_score;
+
+        }
         //display matrix of distance in svg rect with bipolar color
         function chart_display(distance_score_data) {
-
             var margin = {top: 50, right: 0, bottom: 100, left: 50}
             var width = 1000 - margin.left - margin.right;
             var height = 1000 - margin.top - margin.bottom;
             var gridSize = 20;
             var colors = colorbrewer.Spectral[9];
             var cellSize = 10
-            var legendElementWidth = 20
+            var legendElementWidth = 40
             var dataset = distance_score_data;
+            var zoom = d3.behavior.zoom()
+                .scaleExtent([1, 10])
+                .on("zoom", zoomed);
+            function zoomed() {
+                heat_map.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+            }
             //create label for each pair
             var label = [];
             for (i = 0; i < audio_label.length - 1; i++) {
@@ -375,27 +378,33 @@
 
             var tooltip = d3.select("#chart")
                 .append("div")
+                .attr("class","tooltip")
                 .style("position", "absolute")
                 .style("visibility", "hidden");
-            var svg = d3.select("#chart").append("svg")
+
+            var heat_map = d3.select("#chart").append("svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
+                    .call(zoom)
                 .append("g")
-                .attr("transform", "translate(" + margin.left + ",-20)");
+                .attr("transform", "translate(" + margin.left + ","+ margin.left +")");
 
-
-             var scale = d3.scale.linear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
+            var scale = d3.scale.linear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
 
             var colorScale = d3.scale.quantize()
                 .domain([0, 1])
                 .range(colors)
 
             var row_label_index = [];
+            var active_value;
 
-            var draw = svg.selectAll("g")
+            var draw = heat_map.selectAll("g")
                 .data(dataset)
                 .enter()
                 .append("g")
+                // .attr("class",function(d,i){
+                //     return "rect"+i
+                // })
                 .attr("transform", (d, i) => `translate(${(i+10) * ((gridSize)-5)}, ${(i+10) * ((gridSize)-5)})`)
                 .selectAll("rect")
                 .data(function (row, rownumber) {
@@ -413,31 +422,40 @@
                 .attr("height", 8)
                 .attr("width", 8)
                 .attr("transform", "translate(55,20)")
-                .attr("class", ".tooltip")
+                .attr("class", "rectheatmap")
                 .style("fill", "green")
-                .on('mouseover', function (d, i) {
+                .on('mouseover', function (d) {
+                    active_value=d.value;
+                    d3.selectAll(".link")
+                        .attr("stroke", function(d) { return ( d.value == active_value)?'black': colorScale(scale(d.value)) })
+                        .attr("stroke-width",function(d) { return ( d.value == active_value)?(3*(d.value)):Math.sqrt(d.value)});
                     if (d != null) {
                         // tooltip.html('<div class="tooltip">' + d.label[i] + ": " + d.value.toFixed(2) + '</div>');
-                        tooltip.html('<div class="tooltip">' + d.value.toFixed(2) + '</div>');
+                        tooltip.html(d.value.toFixed(2));
                         tooltip.style("visibility", "visible");
+                        tooltip.style("top", (d3.event.pageY-220) + "px").style("left", (d3.event.pageX - 650) + "px");
                     } else
                         tooltip.style("visibility", "hidden");
                 })
                 .on('mouseout', function () {
                     tooltip.style("visibility", "hidden");
+                    d3.selectAll(".link")
+                        .attr("stroke", function(d) { return colorScale(scale(d.value)) })
+                        .attr("stroke-width", function(d){return Math.sqrt(d.value)});
                 })
-                .on("mousemove", function (d, i) {
-                    tooltip.style("top", (d3.event.pageY-135) + "px").style("left", (d3.event.pageX - 1025) + "px");
-                })
+                // .on("mousemove", function (d, i) {
+                //     tooltip.style("top", (d3.event.pageY-220) + "px").style("left", (d3.event.pageX - 650) + "px");
+                // })
                 .transition().duration(500)
                 .style("fill", function (d) {
                     return colorScale(scale(d.value));
                 });
 
+
             var col_label=audio_label.slice(0,audio_label.length-1);
             var row_label=audio_label.slice(1,audio_label.length);
 
-            var rowLabels = svg.append("g")
+            var rowLabels = heat_map.append("g")
                 .selectAll(".rowLabelg")
                 .data(row_label)
                 .enter()
@@ -449,10 +467,16 @@
                 .style("text-anchor", "end")
                 .attr("transform", "translate("+195+ ",175)")
                 .attr("class", function (d,i) { return "rowLabel mono r"+i;} )
-                .on("mouseover", function(d) {d3.select(this).classed("text-hover",true);})
-                .on("mouseout" , function(d) {d3.select(this).classed("text-hover",false);});
+                .on("mouseover", function(d) {
+                    d3.select(this).classed("text-hover",true);
+                    d3.select(this).transition().duration(200).attr("font-size","15px");
+                })
+                .on("mouseout" , function(d) {
+                    d3.select(this).classed("text-hover",false);
+                    d3.select(this).transition().duration(200).attr("font-size","8px");
+                });
 
-            var colLabels = svg.append("g")
+            var colLabels = heat_map.append("g")
                 .selectAll(".colLabelg")
                 .data(col_label)
                 .enter()
@@ -464,15 +488,25 @@
                 .style("text-anchor", "left")
                 .attr("transform", "translate("+210 + ",165) rotate(270)")
                 .attr("class",  function (d,i) { return "colLabel mono c"+i;} )
-                .on("mouseover", function(d) {d3.select(this).classed("text-hover",true);})
-                .on("mouseout" , function(d) {d3.select(this).classed("text-hover",false);});
+                .on("mouseover", function(d) {
+                    d3.select(this).classed("text-hover",true);
+                    d3.select(this).transition().duration(200).attr("font-size","15px");
+                })
+                .on("mouseout" , function(d) {
+                    d3.select(this).classed("text-hover",false);
+                    d3.select(this).transition().duration(200).attr("font-size","8px");
+                });
 
+            var control1 = d3.select("#controller").append("svg")
+                .attr("width",650)
+                .attr("height",100)
+                .attr("transform","translate(650,0)");
 
             //create legend bar to show the level of each chroma feature in color. Domain of chroma  [0,1]
-            var legend = svg.append("g")
+            var legend = control1.append("g")
                 .attr("class", "legend")
                 .attr("transform",
-                    "translate(0,0)")
+                    "translate(0,25)")
                 .selectAll(".legendElement")
                 .data([0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9])
                 .enter().append("g")
@@ -485,7 +519,7 @@
                 .attr("y", 20)
                 .attr("class", "cellLegend bordered")
                 .attr("width", legendElementWidth)
-                .attr("height", cellSize / 2)
+                .attr("height", cellSize)
                 .style("fill", function (d, i) {
                     return colors[i];
 
@@ -499,18 +533,24 @@
                 .attr("x", function (d, i) {
                     return legendElementWidth * i;
                 })
-                .attr("y", 20 + cellSize)
-                .attr("font-size", "5px");
+                .attr("y", 40)
+                .attr("font-size", "12px");
 
+            control1.append("text")
+                .text("Dissimilarity Scale")
+                .attr("x",150)
+                .attr("y",30)
+                .attr("font-family", "Times New Roman")
+                .attr("font-size", "15px");
         }
+
         function network_diagram(distance_data) {
-            d3.select("#loader").style("opacity", 1.0).style("display", "none");
-            var width = 1000,
-                height = 1000;
+            d3.select("#loader").style("display", "none");
+            var width = 650,
+                height = 1100;
             var colors = colorbrewer.Spectral[9];
             var dataset=distance_data;
             var scale = d3.scale.linear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
-
             var colorScale = d3.scale.quantize()
                 .domain([0, 1])
                 .range(colors)
@@ -527,13 +567,18 @@
                 .extent([0, 0]);
             var svg = d3.select("#network").append("svg")
                 .attr("width", width)
-                .attr("height", height)
-                .attr("transform","translate(0,-200)")
-            var links_g = svg.append("g").attr("transform","translate(-200,0)");
-            var nodes_g = svg.append("g").attr("transform","translate(-200,0)");
+                .attr("height", height);
 
-            svg.append("g")
-                .attr("transform", "translate(-220,250),rotate(270)")
+            var links_g = svg.append("g").attr("transform","translate(-100,-200)");
+
+            var nodes_g = svg.append("g").attr("transform","translate(-100,-200)");
+
+            var control2 = d3.select("#controller").append("svg")
+                .attr("width",650)
+                .attr("height",100)
+                .attr("transform","translate(-650,0)");
+            control2.append("g")
+                .attr("transform", "translate(0,50) rotate(270)")
                 .attr("class", "x axis")
                 .call(d3.svg.axis()
                     .scale(x)
@@ -548,10 +593,9 @@
                     return this.parentNode.appendChild(this.cloneNode(true));
                 })
                 .attr("class", "halo");
-
-            var slider = svg.append("g")
+            var slider = control2.append("g")
                 .attr("class", "slider")
-                .attr("transform", "translate(-220,300),rotate(270)")
+                .attr("transform", "translate(0,0),rotate(270)")
                 .call(brush);
 
             slider.selectAll(".extent,.resize")
@@ -559,22 +603,22 @@
 
             var handle = slider.append("circle")
                 .attr("class", "handle")
-                .attr("transform", "translate(" + (50) + ",0)")
+                .attr("transform", "translate(" + (-50) + ",0)")
                 .attr("r", 5);
 
-            svg.append("text")
-                .attr("x", 200)
-                .attr("y", 220)
+            control2.append("text")
+                .attr("x", 50)
+                .attr("y", 100)
                 .attr("text-anchor", "end")
-                .attr("font-size", "12px")
-                .style("opacity", 0.5)
-                .text("Euclidean Distance Threshold");
+                .attr("font-size", "15px")
+                .text("Euclidean Distance Threshold")
+                .attr("transform", "translate(400,-70)");
 
 
             var nodes = totaldata;
             nodes.forEach((d, i) => {
                 d.name = audio_label[i];
-                d.url = fileContent[i]
+                d.url = fileContent[i];
                 d.image = all_image[i];
             })
 
@@ -596,7 +640,6 @@
                 d.i = i;
             });
 
-
             function brushed() {
                 var value = brush.extent()[0];
                 if (d3.event.sourceEvent) {
@@ -607,12 +650,25 @@
                 var threshold = value;
 
                 var thresholded_links = links.filter(function (d) {
+
                     return (d.value <= threshold);
                 });
+                console.log(thresholded_links)
+                var array_data=[];
+                thresholded_links.forEach(
+                    function (d) {
+                        array_data.push(d.value)
+                        d3.selectAll("rect").classed("displayrect", function (d) {
+                                return array_data.includes(d.value) == true ? true : false;
+                            }
+                        )
+                    }
+                )
 
                 force
                     .links(thresholded_links);
 
+                var active_value;
                 var link = links_g.selectAll(".link")
                     .data(thresholded_links, function (d) {
                         return d.i;
@@ -620,10 +676,25 @@
 
                 link.enter().append("line")
                     .attr("class", "link")
-                    .style("stroke-width", function (d) {
+                    .attr("stroke-width", function (d) {
                         return Math.sqrt(d.value);})
-                    .style("stroke", function(d) { return colorScale(scale(d.value)) });
-
+                    .attr("stroke", function(d) { return colorScale(scale(d.value)) })
+                    .on('mouseover', function (d) {
+                        active_value=d.value;
+                        d3.selectAll('.rectheatmap')
+                            .transition().duration(1000).attr("width", function(d){
+                            return d.value==active_value?'15':8
+                        }).attr("height", function(d){
+                            return d.value==active_value?'15':8
+                        })
+                    })
+                        .on('mouseout', function() {
+                            d3.selectAll(".rectheatmap").transition().duration(1000).attr("width", function(d){
+                                return 8
+                            }).attr("height", function(d){
+                                return 8
+                            })
+                        });
 
                 link.exit().remove();
 
@@ -657,20 +728,29 @@
 
             force
                 .nodes(nodes);
+
+
+            brush.on("brush", brushed);
+            slider
+                .call(brush.extent([0, 0]))
+                .call(brush.event);
+
             var node = nodes_g.selectAll(".node")
                 .data(nodes)
                 .enter().append("g")
                 .attr("class", "node")
-                .call(force.drag);
+                .call(force.drag)
+
             node.append('svg:image')
                 .attr('xlink:href', function (d) {
                     return d.image;
                 })
                 .attr('x', 0)
                 .attr('y', 0)
-                .attr('width', 63)
-                .attr('height', 42)
-                .on("click", function(d){ PlayAudio(this, d) });
+                .attr('width', 25)
+                .attr('height', 25)
+                .on("click", function(d){
+                    PlayAudio(this, d) });
 
             var text = svg.append("g")
                 .attr("class", "labels")
@@ -681,9 +761,9 @@
                 .attr("dy", "-1.2em")
                 .attr("font-size", "10px")
                 .text(function (d) {
-                    return d.name
+                    return d.name;
                 })
-                .attr("transform","translate(-200,0)")
+                .attr("transform","translate(-120,-200)")
                 .on("click", function(d){ PlayAudio(this, d) });
 
             function PlayAudio(thisElement, d) {
@@ -727,11 +807,7 @@
             };
 
 
-            brush.on("brush", brushed);
 
-            slider
-                .call(brush.extent([0, 0]))
-                .call(brush.event);
 
 
         }
@@ -4212,9 +4288,10 @@
 
                                 this._m.audioContext = options.audioContext; // TODO: validate options
 
-                                this._m.bufferSize = options.bufferSize || this._m.bufferSize || 256;
-                                this._m.hopSize = options.hopSize || this._m.hopSize || this._m.bufferSize;
-                                this._m.sampleRate = options.sampleRate || this._m.audioContext.sampleRate || 44100;
+                                this._m.bufferSize = options.bufferSize;
+                                this._m.hopSize = options.hopSize;
+                                this._m.sampleRate = options.sampleRate;
+                                this._m.numberOfMFCCCoefficients = options.numberOfMFCCCoefficients;
                                 this._m.callback = options.callback;
                                 this._m.windowingFunction = options.windowingFunction || 'hanning';
                                 this._m.featureExtractors = _featureExtractors__WEBPACK_IMPORTED_MODULE_1__;

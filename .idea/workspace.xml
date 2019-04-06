@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="76e2b8b2-2181-4531-b729-6fad8175de94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/all-samples/sound/contrabassa32.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/all-samples/sound/flute_D42.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
@@ -19,19 +21,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/css/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+            <state relative-caret-position="51">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
@@ -39,8 +32,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3043">
-              <caret line="220" column="48" lean-forward="true" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
+            <state relative-caret-position="225">
+              <caret line="434" column="51" selection-start-line="434" selection-start-column="51" selection-end-line="434" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1836">
+              <caret line="108" column="8" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -56,36 +58,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>42</find>
-      <find>hamming</find>
-      <find>Head</find>
-      <find>url</find>
-      <find>ur</find>
-      <find>debugger</find>
-      <find>count</find>
-      <find>Element</find>
-      <find>ElementbyId</find>
-      <find>filepick</find>
-      <find>loader</find>
-      <find>chart</find>
-      <find>body</find>
-      <find>label</find>
-      <find>&quot;Euc</find>
-      <find>link</find>
-      <find>translate</find>
-      <find>tick</find>
-      <find>totalscore</find>
-      <find>row_label</find>
-      <find>margin.left</find>
+      <find>brush</find>
       <find>chart_display</find>
-      <find>cellSize</find>
+      <find>thresholded</find>
+      <find>audio_label</find>
+      <find>row_label_index</find>
+      <find>loader</find>
+      <find>row.map</find>
+      <find>d3.select</find>
+      <find>d3.selectAll</find>
+      <find>&quot;rect&quot;</find>
+      <find>classed</find>
+      <find>visible</find>
+      <find>brushed</find>
+      <find>tooltip1</find>
+      <find>rectheat</find>
+      <find>opacity</find>
+      <find>rect</find>
+      <find>&lt;div</find>
       <find>tooltip</find>
-      <find>Eucl</find>
-      <find>network</find>
-      <find>tool</find>
-      <find>self_similarity_data</find>
+      <find>origin_data</find>
       <find>totaldata</find>
-      <find>draw</find>
+      <find>median</find>
+      <find>total</find>
+      <find>tsne</find>
+      <find>drawmatrix</find>
+      <find>origin_data1</find>
+      <find>console.log</find>
+      <find>toFixed</find>
+      <find>origindata</find>
+      <find>stroke</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -102,7 +104,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1376" />
@@ -112,36 +114,12 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Audio_API_Similarity" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Audio_API_Similarity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Audio_API_Similarity" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Audio_API_Similarity" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Audio_API_Similarity" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Audio_API_Similarity" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CS5331_Spring2019" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -157,12 +135,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Audio_API_Similarity/index.html">
+      <method v="2" />
+    </configuration>
     <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/main.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="Node.js.main.js" />
       </list>
     </recent_temporary>
@@ -181,23 +163,25 @@
       <workItem from="1552923355016" duration="20687000" />
       <workItem from="1553023928910" duration="9746000" />
       <workItem from="1553266234863" duration="55627000" />
-      <workItem from="1553547923212" duration="30197000" />
+      <workItem from="1553547923212" duration="102565000" />
+      <workItem from="1554220642699" duration="2479000" />
+      <workItem from="1554487087012" duration="14635000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119539000" />
+    <option name="totallyTimeSpent" value="209021000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1376" height="784" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24364723" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24364723" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.07364976" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.8396072" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -210,9 +194,39 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24364723" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.07364976" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.8396072" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/main.js</url>
+          <line>642</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/meta.rnc">
@@ -238,31 +252,55 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test file api.html" />
-    <entry file="file://$USER_HOME$/Desktop/main.js">
+    <entry file="file://$USER_HOME$/Desktop/main.js" />
+    <entry file="file://$USER_HOME$/Downloads/Real_Time_Audio_Mfcc-master/assets/js/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="756" lean-forward="true" selection-start-line="717" selection-start-column="4" selection-end-line="756" />
+        <state relative-caret-position="178">
+          <caret line="48648" column="19" selection-start-line="48648" selection-start-column="12" selection-end-line="48648" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Real_Time_Audio_Mfcc-master/assets/js/bundle1.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/WebWorker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/processdata.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/customtsne.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/ThetSNEWorker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="87" column="18" lean-forward="true" selection-start-line="87" selection-start-column="18" selection-end-line="87" selection-end-column="18" />
+        <state relative-caret-position="1836">
+          <caret line="108" column="8" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        <state relative-caret-position="51">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3043">
-          <caret line="220" column="48" lean-forward="true" selection-start-line="220" selection-start-column="48" selection-end-line="220" selection-end-column="48" />
+        <state relative-caret-position="225">
+          <caret line="434" column="51" selection-start-line="434" selection-start-column="51" selection-end-line="434" selection-end-column="51" />
         </state>
       </provider>
     </entry>
