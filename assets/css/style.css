@@ -1,4 +1,49 @@
 
+.node {
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+/*.links {*/
+/*!*stroke: #000000;*!*/
+/*opacity: 0;*/
+/*!*stroke-width: 1.0px*!*/
+/*}*/
+
+.axis {
+    opacity: 0.5;
+    font: 10px sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.axis .domain {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .3;
+    stroke-width: 4px;
+    stroke-linecap: round;
+}
+
+.axis .halo {
+    fill: none;
+    stroke: #ddd;
+    stroke-width: 3px;
+    stroke-linecap: round;
+}
+
+.slider .handle {
+    fill: #fff;
+    stroke: #000;
+    stroke-opacity: .5;
+    stroke-width: 1.25px;
+    cursor: grab;
+}
+text.text-hover {
+    fill: #00C;
+}
+
 .header {
     font-family: 'Open Sans', sans-serif;
     color: #555;
@@ -15,7 +60,7 @@
     width:1350px;
     height:50px;
     text-align: center;
-    background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+    background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, red 25%, blue 50%, transparent 50%, transparent 75%, deepskyblue 75%);
     background-size: 10px 10px;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -36,6 +81,17 @@ h1 {
 }
 
 h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    text-align: center;
+}
+h4 {
     font-family: 'Dancing Script', cursive;
     font-size: 20px;
     text-align: center;
@@ -63,7 +119,7 @@ h2 {
 .btn {
     border: 2px solid gray;
     color: gray;
-    background-color: white;
+    background-color: whitesmoke;
     padding: 8px 20px;
     border-radius: 10px;
     font-size: 20px;
@@ -84,28 +140,45 @@ h2 {
     position:absolute;
     top: 200px;
     left: 1px;
-    width:650px;
-    height:1100px;
+    width:450px;
+    height:1000px;
     resize: both;
-
 }
 #chart{
     border: 1px solid black;
     position:absolute;
     top:200px;
-    left:650px;
-    width:700px;
-    height:1100px;
-    overflow: scroll;
+    left:451px;
+    width:450px;
+    height:1000px;
 }
-#Canvas{
 
+#theGraph{
+    border: 1px solid black;
     position:absolute;
-    top:1110px;
-    left:1px;
-    width:1000px;
-    height:200px;
+    top: 200px;
+    left: 0px;
+    width:675px;
+    height:1000px;
+    resize: both;
 }
+
+#network_mst{
+    border: 1px solid black;
+    position:absolute;
+    top: 200px;
+    left: 675px;
+    width:675px;
+    height:1000px;
+    resize: both;
+}
+/*#myCanvas{*/
+    /*position:absolute;*/
+    /*top:900px;*/
+    /*left:1px;*/
+    /*width:200px;*/
+    /*height:200px;*/
+/*}*/
 .tooltip {
     text-align: center;
     font-family: monospace;
@@ -159,12 +232,145 @@ h2 {
     outline: none;
     height: 100px;
     width: 1350px;
+    background-color: lightgray;
 }
 
 .rectheatmap{
-    visibility: hidden;
+    visibility: visible;
 }
 
 .displayrect {
     visibility: visible;
 }
+
+#button1 {
+    background-color: #4CAF50; /* Green */
+    border: 2px solid gray;
+    color: white;
+    padding: 5px 24px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 10px;
+    position: absolute;
+    top: 2px;
+    cursor: pointer;
+}
+#button2 {
+    background-color: #4CAF50; /* Green */
+    border: 2px solid gray;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 10px;
+    position: absolute;
+    top:30px;
+    cursor: pointer;
+}
+#button3 {
+    background-color: #4CAF50; /* Green */
+    border: 2px solid gray;
+    color: white;
+    padding: 5px 33px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 10px;
+    position: absolute;
+    top:58px;
+    cursor: pointer;
+}
+
+#button4 {
+    background-color: #4CAF50; /* Green */
+    border: 2px solid gray;
+    color: white;
+    padding: 5px 33px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 10px;
+    position: absolute;
+    top:20px;
+    left: 1150px;
+    cursor: pointer;
+}
+
+#button5 {
+    background-color: #4CAF50; /* Green */
+    border: 2px solid gray;
+    color: white;
+    padding: 5px 36px;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-size: 10px;
+    position: absolute;
+    top:50px;
+    left: 1150px;
+    cursor: pointer;
+}
+#filepicker {
+    transition: all 0.5s;
+    position: absolute;
+    left: 1px;
+    top: 50px;
+    overflow: hidden;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    height: 45px;
+}
+#button1:hover {background-color: deepskyblue;
+}
+
+#button2:hover {background-color: deepskyblue;
+}
+
+#button3:hover {background-color: deepskyblue;
+}
+#button4:hover {background-color: deepskyblue;
+}
+
+#button5:hover {background-color: deepskyblue;
+}
+
+#form{
+    position: absolute;
+    left: 170px
+}
+
+.slidecontainer_perplexity{
+    position: absolute;
+    left: 900px;
+    top: 20px;
+}
+.slidecontainer_iteration{
+    position: absolute;
+    left: 900px;
+    top: 60px;
+}
+#tsne{
+    position: absolute;
+    left: 900px;
+    top:-10px;
+}
+
+div.tooltip_circle {
+    position: absolute;
+    top: 250px;
+    left:150px;
+    text-align: left;
+    width: 130px;
+    height: 100px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+

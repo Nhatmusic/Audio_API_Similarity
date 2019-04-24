@@ -1,69 +1,23 @@
 <html>
 <head>
-    <!-- style sheets -->
     <link rel="stylesheet" href="./assets/css/style.css">
-    <style>
-
-        .node {
-            stroke: #fff;
-            stroke-width: 1.5px;
-        }
-
-        /*.link {*/
-            /*stroke: #000000;*/
-            /*stroke-opacity: .6;*/
-        /*}*/
-
-        .axis {
-            opacity: 0.5;
-            font: 10px sans-serif;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        .axis .domain {
-            fill: none;
-            stroke: #000;
-            stroke-opacity: .3;
-            stroke-width: 4px;
-            stroke-linecap: round;
-        }
-
-        .axis .halo {
-            fill: none;
-            stroke: #ddd;
-            stroke-width: 3px;
-            stroke-linecap: round;
-        }
-
-        .slider .handle {
-            fill: #fff;
-            stroke: #000;
-            stroke-opacity: .5;
-            stroke-width: 1.25px;
-            cursor: grab;
-        }
-        text.text-hover {
-            fill: #00C;
-        }
-    </style>
     <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/p5/p5.min.js"></script>
     <script src="./assets/js/math.min.js"></script>
-    <script src="./assets/js/d3.v3.min.js"></script>
+    <script src="./assets/js/d3.v4.min.js"></script>
+    <script src="./assets/js/disjoint-set.js"></script>
+    <script src="./assets/js/kruskal-mst.js"></script>
     <script src="https://d3js.org/d3-color.v1.min.js"></script>
     <script src="https://d3js.org/d3-scale.v2.min.js"></script>
     <script src="./assets/js/colorbrewer.v1.min.js"></script>
     <script src="./assets/js/underscore.js"></script>
+    <script src="./assets/js/numjs.min.js"></script>
     <script src="./assets/js/distance.js"></script>
+    <script src="./assets/js/clusters.js"></script>
+    <script src="https://unpkg.com/meyda/dist/web/meyda.min.js"></script>
     <script src="./assets/js/tsne.js"></script>
-    <script src="main.js"></script>
-
-
-
-
 </head>
+
 <body>
 
 <div class="header">Sound Visualization</div>
@@ -71,23 +25,45 @@
     <button class="btn">Upload sounds</button>
 <input type="file" accept=".mp3,.wav,.ogg" name="fileList" multiple/>
 </div>
+
 <div id="loader"></div>
 
 <div id="controller">
+    <p id="tsne">T-SNE Configuration</p>
+    <form action="/action_page.php" id="form">
+        Max audio's duration: <input type=number value=4 id="duration"><br>
+    </form>
+    <button id="button1" onclick="calculate_Euclidean()">Euclidean Comparision</button>
+    <button id="button2" onclick="calculate_SmithWaterman()">SmithWaterman Comparision</button>
+    <button id="button3" onclick=" calculate_tsne()">T-sne Comparision</button>
+    <button id="button4" onclick=" draw_network(minimumSpanningTree)">Draw MST</button>
+    <button id="button5" onclick=" playmusic()">Play MST</button>
+    <div class="slidecontainer_perplexity">
+        <label>Perplexity:</label>
+        <input type="range" min="1" max="100" value="10" class="slider" id="myRange1" oninput="perplexity_output.value = myRange1.value">
+        <output name="Output1" id="perplexity_output">10</output>
+    </div>
+    <div class="slidecontainer_iteration">
+        <label>Iterations:</label>
+        <input type="range" min="500" max="5000" value="1000" class="slider" id="myRange2" oninput="iteration_output.value = myRange2.value">
+        <output name="Output2" id="iteration_output">1000</output>
+    </div>
 </div>
 
-<div id="network">
-    <h1>Network Diagram of Distance Pair Node</h1>
-</div>
 
-<div id="chart">
-    <h2>Heatmap of Distance Between Matrix Pair</h2>
-</div>
-
-<div id="Canvas">
 <canvas id="myCanvas"></canvas>
+<div id="theGraph">
+    <h3>Scatter Plot of T-SNE Output</h3>
+    <div id="textDiv"></div>
 </div>
 
+<div id="network_mst">
+    <h4>MST Network</h4>
 </div>
+
+<script src="webworker.js"></script>
+<script src="main.js"></script>
+
+
 </body>
 </html>

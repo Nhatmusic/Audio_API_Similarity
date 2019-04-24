@@ -401,9 +401,9 @@ function playmusic(){
                 PlayAudio(node_play[store_links[i]].element, node_play[store_links[i]]);
                 d3.select(node_play[store_links[i]].element)
                 // Does work
-                    .attr("r", 30)
+                    .attr("r", 10)
                     .transition().duration(500)
-                    .attr("r",10);
+                    .attr("r",5);
                 // if(i<store_links.length/2) {
                 //     d3.select(link_play[i].element)
                 //         .transition().duration(2000)
@@ -448,29 +448,22 @@ function _Draw_Scatterplot(data){
 
         function brusheded() {
             var s = d3.event.selection,
-                x0 = s[0][0]-15,
-                y0 = s[0][1]-15,
+                x0 = s[0][0]-5,
+                y0 = s[0][1]-5,
                 dx = s[1][0] - x0,
                 dy = s[1][1] - y0;
              var brush_data=[]
             svg_scatterplot.selectAll('circle')
-                // .style("fill", function (d) {
-                //     brush_data.push({"data": d, "element": this, "url": d.url, "label": d.label, "x":d.x, "y":d.y, "group":d.group});
-                //     console.log(brush_data);
-                //     if (xScale(d.x) >= x0 && xScale(d.x) <= x0 + dx && yScale(d.y) >= y0 && yScale(d.y) <= y0 + dy) {
-                //         return colors(d.group);
-                //         // return "#000";
-                //     }
-                //
-                //     else { return colors(d.group); }
-                // })
-                .style("opacity",function (d){
-                        brush_data.push({"data": d, "element": this, "url": d.url, "label": d.label, "x":d.x, "y":d.y, "group":d.group});
+                .style("fill", function (d) {
                     if (xScale(d.x) >= x0 && xScale(d.x) <= x0 + dx && yScale(d.y) >= y0 && yScale(d.y) <= y0 + dy) {
-                        return 0.5;
+                         brush_data.push({"data": d, "element": this, "url": d.url, "label": d.label, "x":d.x, "y":d.y, "group":d.group})
+                        console.log(brush_data)
+                        return colors(d.group);
+                        // return "#000";
                     }
-
+                    else { return colors(d.group); }
                 })
+                .attr("pointer-events", "all")
         .on("mouseover", function(d) {
             if (xScale(d.x) >= x0 && xScale(d.x) <= x0 + dx && yScale(d.y) >= y0 && yScale(d.y) <= y0 + dy) {
                 PlayAudio(this, d)
@@ -514,7 +507,7 @@ function _Draw_Scatterplot(data){
         }
         var colors = d3.scaleOrdinal(d3.schemeCategory20);
         const radius = 3;
-        const opacity = "1";
+        const opacity = "0.75";
         const selection = scatterplot.selectAll(".compute").data(data);
         //Exit
         selection.exit().remove();
@@ -574,7 +567,7 @@ function MouseOvertooltip(d) {
 }
 
 function draw_network(graph){
-    var width_network = 650;
+    var width_network = 600;
     var height_network = 400;
     var colors = d3.scaleOrdinal(d3.schemeCategory20);
 
@@ -623,16 +616,12 @@ function draw_network(graph){
         .attr("id",function(d){
             return d.id
         })
-        .attr("r", 10)
+        .attr("r", 5)
         .style("fill", function (d){
             node_play.push({"id": d.id, "element": this, "url": d.url, "label": d.label})
             return colors(d.group)
             console.log("color_node"+colors(d.group))
         })
-        .on("mouseover", function(d) {
-                PlayAudio(this, d)
-            })
-
         .call(d3.drag()
             .on("start", dragstarted)
             .on("drag", dragged)
@@ -730,10 +719,396 @@ function calculate_Euclidean() {
         totalscore.push(scorefinal)
     }
     //Display distance pair in heatmap
-    // chart_display(totalscore);
+    chart_display(totalscore);
     //Display distance in network diagram
     // network_diagram(totalscore)
 
+
+}
+
+function calculate_SmithWaterman() {
+    d3.select("#loader").style("display", "block");
+    var totalscore = [];
+    for (h = 0; h < total_self_similarity_data.length - 1; h++) {
+        var scorefinal = [];
+        for (k = h + 1; k < total_self_similarity_data.length; k++) {
+            var result;
+            result = comparescore_SmithWaterman(total_self_similarity_data[h], total_self_similarity_data[k])
+            //Calculate distance based on SmithWaterman
+            scorefinal.push(SmithWaterman(result[0], result[1]))
+        }
+        totalscore.push(scorefinal)
+    }
+    //Display distance pair in heatmap
+    update_heatmap(totalscore);
+    //Display distance in network diagram
+    draw_slider(totalscore)
+    d3.select("#loader").style("display", "none");
+}
+
+function comparescore_SmithWaterman(selfmatrix1, selfmatrix2) {
+    var crossscore = [];
+    var crossscore2 = [];
+
+    //get distance of all pair between each datapoint of matrix1 and matrix2
+    for (var i = 0; i < selfmatrix1.length; i++) {
+        var crossimilarity_matrix = [];
+        for (var j = 0; j < selfmatrix2.length; j++) {
+            crossimilarity_matrix.push(euclideanDistance(selfmatrix1[i], selfmatrix2[j]))
+        }
+        crossscore.push(crossimilarity_matrix);
+        crossscore2 = crossscore.slice();
+    }
+    return [crossscore, crossscore2];
+}
+
+function SmithWaterman(cross_similarity, crossimilarity_for_binary) {
+    //Create Cross similarity Matrix from 2 SSM data
+    function sortrow(cross_similarity) {
+        //sort the row of cross similarity matrix then take the k*row.length point
+        rowsort = [];
+        for (var i = 0; i < cross_similarity.length; i++) {
+            rowsort.push(cross_similarity[i].sort(function (cross_similarity, b) {
+                return cross_similarity - b;
+            }))
+        }
+        rowsortmin = [];
+        number = 0;
+        number = math.round(cross_similarity.length * 0.5)
+
+        for (var i = 0; i < rowsort.length; i++) {
+            rowsortmin.push(rowsort[i][number])
+        }
+    }
+
+
+    function sortcol(cross_similarity) {
+        //sort the column
+        column = [];
+        column = _.unzip(cross_similarity)
+        sortcolumn = [];
+        for (var i = 0; i < column.length; i++) {
+            sortcolumn.push(column[i].sort(function (cross_similarity, b) {
+                return cross_similarity - b;
+            }))
+        }
+        number = 0;
+        number = math.round(cross_similarity[0].length * 0.5)
+
+        sortcolumnmin = [];
+        for (var i = 0; i < sortcolumn.length; i++) {
+            sortcolumnmin.push(sortcolumn[i][number])
+        }
+    }
+
+    //draw binary matrix
+    function drawbinarymatrix(crossimilarity_for_binary) {
+        for (var i = 0; i < crossimilarity_for_binary.length; i++) {
+            for (var j = 0; j < crossimilarity_for_binary[0].length; j++) {
+                if (crossimilarity_for_binary[i][j] < math.min(rowsortmin[i], sortcolumnmin[j])) {
+                    crossimilarity_for_binary[i][j] = 0;
+                } else {
+                    crossimilarity_for_binary[i][j] = 1;
+                }
+            }
+        }
+        return crossimilarity_for_binary;
+    }
+
+    function Delta(a, b) {
+        gapOpening = -0.5;
+        gapExtension = -0.7;
+        if (b > 0) {
+            return 0;
+        } else if (b == 0 && a > 0) {
+            return gapOpening;
+        } else {
+            return gapExtension;
+        }
+    }
+
+    function Match(i) {
+        matchScore = 1;
+        mismatchScore = -1;
+
+        if (i == 1) {
+            return mismatchScore
+        } else {
+            return matchScore
+        }
+    }
+
+    function score(crossimilarity_for_binary) {
+        // N = crossimilarity.length[0]+1
+        // M = crossimilarity.length[1]+1
+        //math.zeros(math.size(A))
+
+        arr = Array(crossimilarity_for_binary.length + 1).fill(Array(crossimilarity_for_binary[0].length + 1));
+        D = math.zeros(math.size(arr))
+        maxD = 0;
+        for (i = 3; i < D.length; i++) {
+            for (j = 3; j < D[0].length; j++) {
+                MS = Match(crossimilarity_for_binary[i - 1][j - 1])
+                //H_(i-1, j-1) + S_(i-1, j-1) + delta(S_(i-2,j-2), S_(i-1, j-1))
+                d1 = D[i - 1][j - 1] + MS + Delta(crossimilarity_for_binary[i - 2][j - 2], crossimilarity_for_binary[i - 1][j - 1])
+                //H_(i-2, j-1) + S_(i-1, j-1) + delta(S_(i-3, j-2), S_(i-1, j-1))
+                d2 = D[i - 2][j - 1] + MS + Delta(crossimilarity_for_binary[i - 3][j - 2], crossimilarity_for_binary[i - 1][j - 1])
+                //H_(i-1, j-2) + S_(i-1, j-1) + delta(S_(i-2, j-3), S_(i-1, j-1))
+                dd3 = D[i - 1][j - 2] + MS + Delta(crossimilarity_for_binary[i - 2][j - 3], crossimilarity_for_binary[i - 1][j - 1])
+                D[i][j] = math.max(d1, d2, dd3, 0)
+            }
+        }
+        return math.max(D);
+    }
+
+    sortrow(cross_similarity);
+    sortcol(cross_similarity);
+    drawbinarymatrix(crossimilarity_for_binary);
+
+    return score(crossimilarity_for_binary)
+
+}
+
+// Create Cross similarity Matrix from 2 SSM data
+function comparescore_Euclidean(selfmatrix1, selfmatrix2) {
+    var crossscore = [];
+    //get distance of all pair between each datapoint of matrix1 and matrix2
+    for (var i = 0; i < selfmatrix1.length; i++) {
+        var crossimilarity_matrix = [];
+        for (var j = 0; j < selfmatrix2.length; j++) {
+            crossimilarity_matrix.push(euclideanDistance(selfmatrix1[i], selfmatrix2[j]))
+        }
+        crossscore.push(crossimilarity_matrix)
+    }
+    //get the min distance of each pair of datapoint of matrix 1 to all datapoint of matrix 2
+    var ssmcompare = [];
+    for (var i = 0; i < crossscore.length; i++) {
+        ssmcompare.push(math.min(crossscore[i]))
+
+    }
+    //define the distance between two matrix by get the median distance of all pair
+    return math.median(ssmcompare);
+}
+
+//display matrix of distance in svg rect with bipolar color
+function chart_display(distance_score_data) {
+    var margin = {top: 50, right: 0, bottom: 50, left: 50}
+    var width = 450 - margin.left - margin.right;
+    var height = 1000 - margin.top - margin.bottom;
+    var gridSize = 20;
+    var colors = colorbrewer.Spectral[9];
+    var dataset = distance_score_data;
+    var zoom = d3.zoom()
+        .scaleExtent([-10, 10])
+        .on("zoom", zoomed);
+
+    function zoomed() {
+        heat_map.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    }
+    //create label for each pair
+    var label = [];
+    for (i = 0; i < audio_label.length - 1; i++) {
+        var label1 = [];
+        for (j = i + 1; j < audio_label.length; j++) {
+            label1.push(audio_label[i] + ":" + audio_label[j])
+        }
+        label.push(label1)
+    }
+    var tooltip = d3.select("#chart")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("visibility", "hidden");
+
+    heat_map = d3.select("#chart").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .call(zoom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.left + ")");
+    draw_heatmap()
+    function draw_heatmap() {
+        var scale = d3.scaleLinear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
+        var colorScale = d3.scaleQuantize()
+            .domain([0, 1])
+            .range(colors)
+        var row_label_index = [];
+        var active_value;
+        var draw = heat_map.selectAll("g")
+            .data(dataset);
+        var drawrect1= draw.enter()
+            .append("g")
+            .attr("transform", (d, i) => `translate(${(i + 5) * ((gridSize) - 5)}, ${(i + 3) * ((gridSize) - 5)})`)
+        var drawrect = drawrect1.selectAll('rect')
+            .data(function (row, rownumber) {
+                row_label_index = rownumber;
+                return row.map(d => {
+                    return {label: label[rownumber], value: d}
+                });
+            });
+
+        drawrect.enter()
+            .append('rect')
+            .attr("x", function (d, i) {
+                return i * (gridSize - 5);
+            })
+            .attr("y", 0)
+            .attr("height", 8)
+            .attr("width", 8)
+            // .attr("transform", "translate(55,20)")
+            .attr("class", "rectheatmap")
+            .style("fill", "green")
+            .on('mouseover', function (d) {
+                active_value = d.value;
+                d3.selectAll(".link")
+                    .attr("stroke", function (d) {
+                        return (d.value == active_value) ? 'black' : colorScale(scale(d.value))
+                    })
+                    .attr("stroke-width", function (d) {
+                        return (d.value == active_value) ? (3 * (d.value)) : Math.sqrt(d.value)
+                    });
+                if (d != null) {
+                    // tooltip.html('<div class="tooltip">' + d.label[i] + ": " + d.value.toFixed(2) + '</div>');
+                    tooltip.html(d.value.toFixed(2));
+                    tooltip.style("visibility", "visible");
+                    tooltip.style("top", (d3.event.pageY - 220) + "px").style("left", (d3.event.pageX - 450) + "px");
+                } else
+                    tooltip.style("visibility", "hidden");
+            })
+            .on('mouseout', function () {
+                tooltip.style("visibility", "hidden");
+                d3.selectAll(".link")
+                    .attr("stroke", function (d) {
+                        return colorScale(scale(d.value))
+                    })
+                    .attr("stroke-width", function (d) {
+                        return Math.sqrt(d.value)
+                    });
+            })
+            .transition().duration(500)
+            .style("fill", function (d) {
+                return colorScale(scale(d.value));
+            });
+        draw.exit().remove();
+        var row_label = audio_label.slice(0, audio_label.length - 1);
+        var col_label = audio_label.slice(1, audio_label.length);
+        var rowLabels = heat_map.append("g")
+            .selectAll(".rowLabelg")
+            .data(row_label);
+
+        rowLabels.enter()
+            .append("text")
+            .text(function (d) {
+                return d;
+            })
+            .attr("x", function (d, i) {
+                return i * 15;
+            })
+            .attr("y", function (d, i) {
+                return i * (gridSize - 5);
+            })
+            .attr("font-size", "8px")
+            .style("text-anchor", "end")
+            .attr("transform", "translate(" + 62 + ",52)")
+            .attr("class", function (d, i) {
+                return "rowLabel mono r" + i;
+            })
+            .on("mouseover", function (d) {
+                d3.select(this).classed("text-hover", true);
+                d3.select(this).transition().duration(200).attr("font-size", "15px");
+            })
+            .on("mouseout", function (d) {
+                d3.select(this).classed("text-hover", false);
+                d3.select(this).transition().duration(200).attr("font-size", "8px");
+            });
+        rowLabels.exit().remove();
+
+        var colLabels = heat_map.append("g")
+            .selectAll(".colLabelg")
+            .data(col_label);
+
+        colLabels.enter()
+            .append("text")
+            .text(function (d) {
+                return d;
+            })
+            .attr("x", 5)
+            .attr("y", function (d, i) {
+                return i * (gridSize - 5);
+            })
+            .attr("font-size", "8px")
+            .style("text-anchor", "left")
+            .attr("transform", "translate(" + 80 + ",48) rotate(270)")
+            .attr("class", function (d, i) {
+                return "colLabel mono c" + i;
+            })
+            .on("mouseover", function (d) {
+                d3.select(this).classed("text-hover", true);
+                d3.select(this).transition().duration(200).attr("font-size", "15px");
+            })
+            .on("mouseout", function (d) {
+                d3.select(this).classed("text-hover", false);
+                d3.select(this).transition().duration(200).attr("font-size", "8px");
+            });
+        colLabels.exit().remove();
+    }
+}
+
+function update_heatmap(dataset){
+    var tooltip = d3.select("#chart")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("visibility", "hidden");
+    var scale = d3.scaleLinear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
+    var colors = colorbrewer.Spectral[9];
+    var colorScale = d3.scaleQuantize()
+        .domain([0, 1])
+        .range(colors)
+    var draw = heat_map.selectAll("g")
+        .data(dataset);
+    draw.enter()
+        .append("g")
+        .attr("transform", (d, i) => `translate(${(i + 5) * ((gridSize) - 5)}, ${(i + 3) * ((gridSize) - 5)})`)
+    var drawrect = draw.selectAll("rect")
+        .data(function (row, rownumber) {
+            row_label_index = rownumber;
+            return row.map(d => {
+                return {value: d}
+            });
+        })
+        .style("fill", "green")
+        .on('mouseover', function (d) {
+            active_value = d.value;
+            d3.selectAll(".link")
+                .attr("stroke", function (d) {
+                    return (d.value == active_value) ? 'black' : colorScale(scale(d.value))
+                })
+                .attr("stroke-width", function (d) {
+                    return (d.value == active_value) ? (3 * (d.value)) : Math.sqrt(d.value)
+                });
+            if (d != null) {
+                // tooltip.html('<div class="tooltip">' + d.label[i] + ": " + d.value.toFixed(2) + '</div>');
+                tooltip.html(d.value.toFixed(2));
+                tooltip.style("visibility", "visible");
+                tooltip.style("top", (d3.event.pageY-220) + "px").style("left", (d3.event.pageX - 450) + "px");
+            } else
+                tooltip.style("visibility", "hidden");
+        })
+        .on('mouseout', function () {
+            tooltip.style("visibility", "hidden");
+            d3.selectAll(".link")
+                .attr("stroke", function (d) {
+                    return colorScale(scale(d.value))
+                })
+                .attr("stroke-width", function (d) {
+                    return Math.sqrt(d.value)
+                });
+        })
+        .transition().duration(500)
+        .style("fill", function (d) {
+            return colorScale(scale(d.value));
+        });
 
 }
 
@@ -798,6 +1173,288 @@ function drawLegend(){
         .attr("font-family", "Times New Roman")
         .attr("font-size", "15px");
 }
+
+function network_diagram(distance_data) {
+    d3.select("#loader").style("display", "block");
+
+    var width = 450,
+        height = 1100;
+    var colors = colorbrewer.Spectral[9];
+    var dataset = distance_data;
+    var scale = d3.scaleLinear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
+    var colorScale = d3.scaleQuantize()
+        .domain([0, 1])
+        .range(colors)
+    // var force = d3.layout.force()
+    //     .charge(-120)
+    //     .linkDistance(150)
+    //     .size([width, height]);
+
+    var force = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function(d) { return d.id; }))
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(width/2, height/2))
+        .force("y", d3.forceY(0))
+        .force("x", d3.forceX(0));
+
+    var x = d3.scaleLinear()
+        .domain([0, math.max(distance_data)])
+        .range([280, 450])
+        .clamp(true);
+    var brush = d3.brushY(x)
+        .extent([0, 0]);
+    var zoom = d3.zoom()
+        .scaleExtent([-20, 10])
+        .on("zoom", zoomed);
+
+    var svg = d3.select("#network").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .attr("pointer-events", "all")
+        .append('svg:g')
+        .call(zoom)
+        .append('svg:g');
+
+    function zoomed() {
+        svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    }
+    links_g = svg.append("g").attr("transform", "translate(-100,-350)");
+
+    var nodes_g = svg.append("g").attr("transform", "translate(-100,-350)");
+    control2 = d3.select("#controller").append("svg")
+        .attr("width", 300)
+        .attr("height", 80)
+        .attr("transform", "translate(-300,0)");
+    slider_tick= control2.append("g")
+        .attr("transform", "translate(-200,30) rotate(270)")
+        .attr("class", "x axis");
+    slider_tick.call(d3.axisBottom()
+        .scale(x)
+        // .orient("left")
+        .tickFormat(function (d) {
+            return d;
+        })
+        .tickSize(0)
+        .tickPadding(12))
+        .select(".domain")
+        .select(function () {
+            return this.parentNode.appendChild(this.cloneNode(true));
+        })
+        .attr("class", "halo");
+
+    var slider = control2.append("g")
+        .attr("class", "slider")
+        .attr("transform", "translate(-160,0),rotate(270)")
+        .call(brush);
+
+    slider.selectAll(".extent,.resize")
+        .remove();
+
+    var handle = slider.append("circle")
+        .attr("class", "handle")
+        .attr("transform", "translate(" + (-30) + ",-40)")
+        .attr("r", 5);
+
+    control2.append("text")
+        .attr("x", 50)
+        .attr("y", 110)
+        .attr("text-anchor", "end")
+        .attr("font-size", "15px")
+        .text("Distance Threshold")
+        .attr("transform", "translate(160,-90)");
+
+    var nodes = total_self_similarity_data;
+    nodes.forEach((d, i) => {
+        d.name = audio_label[i];
+        d.url = fileContent[i];
+        d.image = all_canvas_image[i];
+    })
+
+    force
+        .nodes(nodes);
+
+    var links = [];
+    var link2 = [];
+    for (i = 0; i < audio_label.length - 1; i++) {
+        var link1 = [];
+        for (j = i + 1; j < audio_label.length; j++) {
+            link1.push({"source": i, "target": j})
+        }
+        link2.push(link1)
+    }
+    data1 = d3.merge(distance_data);
+    links = d3.merge(link2);
+    links.forEach(function (d, i) {
+        d.value = data1[i];
+    });
+    links.forEach(function (d, i) {
+        d.i = i;
+    });
+
+    var node = nodes_g.selectAll(".node")
+        .data(nodes);
+
+    node.enter().append("g")
+        .attr("class", "node")
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
+
+    function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+    }
+
+    function dragended(d) {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
+
+    node.exit().remove();
+
+
+    node.append('svg:image')
+        .attr('xlink:href', function (d) {
+            return d.image;
+        })
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('width', 25)
+        .attr('height', 25)
+        .on("click", function (d) {
+            PlayAudio(this, d)
+        });
+
+    var text = svg.append("g")
+        .attr("class", "labels")
+        .selectAll("text")
+        .data(nodes);
+
+    text.enter().append("text")
+        .attr("dx", 0)
+        .attr("dy", "-1.2em")
+        .attr("font-size", "10px")
+        .text(function (d) {
+            return d.name;
+        })
+        .attr("transform", "translate(-120,-350)")
+        .on("click", function (d) {
+            PlayAudio(this, d)
+        });
+    text.exit().remove();
+
+    brush.on("brush", brushed);
+    // slider
+    //     // .call(brush.extent([0, 0]))
+    //     .call(d3.event.selection.map(x));
+
+    function brushed() {
+
+        var value = brush.extent()[0];
+
+        if (d3.event.sourceEvent) {
+            value = x.invert(d3.mouse(this)[1]);
+            brush.extent([value, value]);
+        }
+        handle.attr("cy", x(value));
+        var threshold = value;
+
+        var thresholded_links = links.filter(function (d) {
+
+            return (d.value <= threshold);
+        });
+        console.log(thresholded_links)
+
+        var array_data = [];
+
+        thresholded_links.forEach(
+            function (d) {
+                array_data.push(d.value)
+                d3.selectAll("rect").classed("displayrect", function (d) {
+                        return array_data.includes(d.value) == true ? true : false;
+                    }
+                )
+            }
+        )
+
+        force
+            .links(thresholded_links);
+
+        var active_value;
+        var link = links_g.selectAll(".link")
+            .data(thresholded_links, function (d) {
+                return d.i;
+            });
+        link.exit().remove();
+        link.enter().append("line")
+            .attr("class", "link")
+            .attr("stroke-width", function (d) {
+                if (d.value<0.1){
+                    return 1
+                }
+                else {
+                    return Math.sqrt(d.value);
+                }
+            })
+            .attr("stroke", function (d) {
+                return colorScale(scale(d.value))
+            })
+            .on('mouseover', function (d) {
+                active_value = d.value;
+                d3.selectAll('.rectheatmap')
+                    .transition().duration(1000).attr("width", function (d) {
+                    return d.value == active_value ? '15' : 8
+                }).attr("height", function (d) {
+                    return d.value == active_value ? '15' : 8
+                })
+            })
+            .on('mouseout', function () {
+                d3.selectAll(".rectheatmap").transition().duration(1000).attr("width", function (d) {
+                    return 8
+                }).attr("height", function (d) {
+                    return 8
+                })
+            });
+
+
+
+        force.on("tick", function () {
+            link.attr("x1", function (d) {
+                return d.source.x;
+            })
+                .attr("y1", function (d) {
+                    return d.source.y;
+                })
+                .attr("x2", function (d) {
+                    return d.target.x;
+                })
+                .attr("y2", function (d) {
+                    return d.target.y;
+                });
+
+            node.attr("transform", function (d) {
+                return `translate(${d.x - 12},${d.y - 6})`
+            });
+            text.attr("x", function (d) {
+                return d.x;
+            })
+                .attr("y", function (d) {
+                    return d.y;
+                });
+        });
+        force.start();
+    }
+
+    d3.select("#loader").style("display", "none");
+}
 function PlayAudio(thisElement, d) {
     console.log(thisElement)
     // Play audio on click
@@ -832,12 +1489,66 @@ Audio.prototype.isPlaying = function () {
         && !this.ended           // Audio playback is not ended
         && this.readyState >= 3; // Audio data is available and ready for playback
 };
+
 Audio.prototype.stop = function () {
     // Pause the playback
     this.pause();
     // Reset the playback time marker
     this.currentTime = 0;
 };
+function draw_slider(dataset){
 
+    var colors = colorbrewer.Spectral[9];
+    var colorScale = d3.scaleQuantize()
+        .domain([0, 1])
+        .range(colors)
+    var scale = d3.scaleLinear().domain([math.min(dataset), math.max(dataset)]).range([0, 1])
+    var x = d3.scaleLinear()
+        .domain([0, math.max(dataset)])
+        .range([280, 450])
+        .clamp(true);
+
+    slider_tick.call(d3.axisBottom()
+        .scale(x)
+        // .orient("left")
+        .tickFormat(function (d) {
+            return d;
+        })
+        .tickSize(0)
+        .tickPadding(12))
+        .select(".domain")
+        .select(function () {
+            return this.parentNode.appendChild(this.cloneNode(true));
+        })
+        .attr("class", "halo");
+
+    var update_link=links_g.selectAll('.link')
+        .attr("stroke-width", function (d) {
+            if (d.value < 0.1){
+                return 1
+            }
+            else
+                return Math.sqrt(d.value);
+        })
+        .attr("stroke", function (d) {
+            return colorScale(scale(d.value))
+        })
+        .on('mouseover', function (d) {
+            active_value = d.value;
+            d3.selectAll('.rectheatmap')
+                .transition().duration(1000).attr("width", function (d) {
+                return d.value == active_value ? '15' : 8
+            }).attr("height", function (d) {
+                return d.value == active_value ? '15' : 8
+            })
+        })
+        .on('mouseout', function () {
+            d3.selectAll(".rectheatmap").transition().duration(1000).attr("width", function (d) {
+                return 8
+            }).attr("height", function (d) {
+                return 8
+            })
+        });
+}
 
 

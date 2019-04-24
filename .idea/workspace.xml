@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="76e2b8b2-2181-4531-b729-6fad8175de94" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/all-samples/sound/contrabassa32.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/all-samples/sound/flute_D42.mp3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/clusters.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/clusters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/tsne.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/tsne.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
     </list>
@@ -23,17 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="434" column="51" selection-start-line="434" selection-start-column="51" selection-end-line="434" selection-end-column="51" />
+            <state relative-caret-position="439">
+              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
             </state>
           </provider>
         </entry>
@@ -41,8 +32,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1836">
-              <caret line="108" column="8" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="8" />
+            <state relative-caret-position="541">
+              <caret line="304" column="16" selection-start-line="304" selection-start-column="16" selection-end-line="304" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="106">
+              <caret line="405" column="34" selection-start-line="405" selection-start-column="34" selection-end-line="405" selection-end-column="34" />
+              <folding>
+                <element signature="e#1691#6407#0" />
+                <element signature="e#6445#7823#0" />
+                <element signature="e#8213#9308#0" />
+                <element signature="e#9343#9779#0" />
+                <element signature="e#9925#12442#0" />
+                <element signature="e#12469#13117#0" />
+                <element signature="e#13861#14026#0" />
+                <element signature="e#14105#14367#0" />
+                <element signature="e#19430#19742#0" />
+                <element signature="e#23473#24043#0" />
+                <element signature="e#38706#40458#0" />
+                <element signature="e#48541#49440#0" />
+                <element signature="e#49481#49774#0" />
+                <element signature="e#49812#49923#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,42 +68,43 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>brush</find>
-      <find>chart_display</find>
-      <find>thresholded</find>
-      <find>audio_label</find>
-      <find>row_label_index</find>
-      <find>loader</find>
-      <find>row.map</find>
-      <find>d3.select</find>
+      <find>minimumspanningtree</find>
+      <find>links.weight</find>
+      <find>node</find>
+      <find>background-image</find>
+      <find>d.index</find>
+      <find>selectAll</find>
+      <find>mini</find>
+      <find>minimumSpanningTree</find>
+      <find>svg_network</find>
+      <find>playmsu</find>
+      <find>==</find>
       <find>d3.selectAll</find>
-      <find>&quot;rect&quot;</find>
-      <find>classed</find>
+      <find>d</find>
+      <find>node_play</find>
+      <find>link_p</find>
+      <find>link_play</find>
       <find>visible</find>
+      <find>visibility</find>
+      <find>the</find>
       <find>brushed</find>
-      <find>tooltip1</find>
-      <find>rectheat</find>
-      <find>opacity</find>
-      <find>rect</find>
-      <find>&lt;div</find>
-      <find>tooltip</find>
-      <find>origin_data</find>
-      <find>totaldata</find>
-      <find>median</find>
-      <find>total</find>
-      <find>tsne</find>
-      <find>drawmatrix</find>
-      <find>origin_data1</find>
-      <find>console.log</find>
-      <find>toFixed</find>
-      <find>origindata</find>
-      <find>stroke</find>
+      <find>var colors = d3.scaleOrdinal(d3.schemeCategory20);</find>
+      <find>colors</find>
+      <find>chart_d</find>
+      <find>cluster</find>
+      <find>&gt;</find>
+      <find>fill</find>
+      <find>0.3</find>
+      <find>draw_network</find>
+      <find>brush_data</find>
+      <find>playmusic</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -98,8 +115,20 @@
       <list>
         <option value="$PROJECT_DIR$/test canvas.html" />
         <option value="$PROJECT_DIR$/test file api.html" />
-        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/worker.js" />
+        <option value="$PROJECT_DIR$/assets/js/worker.js" />
+        <option value="$PROJECT_DIR$/assets/js/webworker.js" />
+        <option value="$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/ThetSNEWorker.js" />
+        <option value="$PROJECT_DIR$/enterexit.html" />
+        <option value="$PROJECT_DIR$/main_test.js" />
+        <option value="$PROJECT_DIR$/main1.js" />
+        <option value="$PROJECT_DIR$/../../tsne_data.js" />
+        <option value="$PROJECT_DIR$/../CS5331-Project-2/Dataset/tsne_data.js" />
+        <option value="$PROJECT_DIR$/webworker.js" />
+        <option value="$PROJECT_DIR$/worker.js" />
+        <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/main.js" />
       </list>
     </option>
@@ -114,12 +143,36 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Audio_API_Similarity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Audio_API_Similarity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Audio_API_Similarity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Audio_API_Similarity" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Audio_API_Similarity" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Audio_API_Similarity" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/CS5331-Project-2-master test/CS5331-Project-2-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -165,12 +218,34 @@
       <workItem from="1553266234863" duration="55627000" />
       <workItem from="1553547923212" duration="102565000" />
       <workItem from="1554220642699" duration="2479000" />
-      <workItem from="1554487087012" duration="14635000" />
+      <workItem from="1554487087012" duration="18160000" />
+      <workItem from="1554583131812" duration="6310000" />
+      <workItem from="1554621188140" duration="1882000" />
+      <workItem from="1554700805862" duration="9388000" />
+      <workItem from="1554835267586" duration="25587000" />
+      <workItem from="1554993006800" duration="618000" />
+      <workItem from="1555096724756" duration="52265000" />
+      <workItem from="1555385167772" duration="2347000" />
+      <workItem from="1555431523019" duration="1232000" />
+      <workItem from="1555518350630" duration="16587000" />
+      <workItem from="1555607843745" duration="614000" />
+      <workItem from="1555619688138" duration="3490000" />
+      <workItem from="1555696233061" duration="18584000" />
+      <workItem from="1555775693165" duration="5679000" />
+      <workItem from="1555903293634" duration="463000" />
+      <workItem from="1555906717235" duration="167000" />
+      <workItem from="1555906935017" duration="140000" />
+      <workItem from="1555907558078" duration="56000" />
+      <workItem from="1555908212747" duration="1818000" />
+      <workItem from="1555947595965" duration="201000" />
+      <workItem from="1555960834971" duration="15487000" />
+      <workItem from="1556080334548" duration="6094000" />
+      <workItem from="1556125514922" duration="20425000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209021000" />
+    <option name="totallyTimeSpent" value="401980000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1376" height="784" extended-state="0" />
@@ -182,7 +257,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.07364976" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.8396072" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.23041475" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -195,13 +270,13 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24364723" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24364723" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.07364976" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.8396072" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.07364976" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.23041475" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -216,17 +291,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/main.js</url>
-          <line>642</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/meta.rnc">
@@ -252,7 +316,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test file api.html" />
-    <entry file="file://$USER_HOME$/Desktop/main.js" />
     <entry file="file://$USER_HOME$/Downloads/Real_Time_Audio_Mfcc-master/assets/js/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -263,6 +326,45 @@
     <entry file="file://$USER_HOME$/Downloads/Real_Time_Audio_Mfcc-master/assets/js/bundle1.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/customtsne.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/worker.js" />
+    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/p5/p5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="44672" column="2" selection-start-line="44672" selection-start-column="2" selection-end-line="44672" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/processdata.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1359" column="4" selection-start-line="1359" selection-start-column="4" selection-end-line="1359" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/tsne.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="406" column="11" lean-forward="true" selection-start-line="406" selection-start-column="11" selection-end-line="406" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/WebWorker.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -270,37 +372,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/processdata.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/customtsne.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/tSNETutorialWithWorker/scripts/ThetSNEWorker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        <state relative-caret-position="85">
+          <caret line="5" column="29" lean-forward="true" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/core-scripting.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/main.js" />
+    <entry file="file://$USER_HOME$/Downloads/Real_Time_Audio_Mfcc-master/node_modules/meyda/Gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main1.js" />
+    <entry file="file://$USER_HOME$/Downloads/Real_Time_Audio_Mfcc-master/node_modules/meyda/src/meyda-wa.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2324">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="578" column="10" lean-forward="true" selection-start-line="578" selection-start-column="10" selection-end-line="590" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/webworker.js" />
+    <entry file="file://$PROJECT_DIR$/assets/js/worker.js" />
+    <entry file="file://$PROJECT_DIR$/assets/js/d3.v4.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="117392" selection-start-line="1" selection-start-column="117392" selection-end-line="1" selection-end-column="117392" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../CS5331-Project-2/Dataset/tsne_data.json" />
+    <entry file="file://$PROJECT_DIR$/../../tsne_data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../CS5331-Project-2/Dataset/tsne_data.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enterexit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/clusters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="72" column="43" lean-forward="true" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webworker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/worker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="15" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="108" column="8" selection-start-line="108" selection-start-column="1" selection-end-line="108" selection-end-column="8" />
+        <state relative-caret-position="541">
+          <caret line="304" column="16" selection-start-line="304" selection-start-column="16" selection-end-line="304" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="439">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="434" column="51" selection-start-line="434" selection-start-column="51" selection-end-line="434" selection-end-column="51" />
+        <state relative-caret-position="106">
+          <caret line="405" column="34" selection-start-line="405" selection-start-column="34" selection-end-line="405" selection-end-column="34" />
+          <folding>
+            <element signature="e#1691#6407#0" />
+            <element signature="e#6445#7823#0" />
+            <element signature="e#8213#9308#0" />
+            <element signature="e#9343#9779#0" />
+            <element signature="e#9925#12442#0" />
+            <element signature="e#12469#13117#0" />
+            <element signature="e#13861#14026#0" />
+            <element signature="e#14105#14367#0" />
+            <element signature="e#19430#19742#0" />
+            <element signature="e#23473#24043#0" />
+            <element signature="e#38706#40458#0" />
+            <element signature="e#48541#49440#0" />
+            <element signature="e#49481#49774#0" />
+            <element signature="e#49812#49923#0" />
+          </folding>
         </state>
       </provider>
     </entry>
